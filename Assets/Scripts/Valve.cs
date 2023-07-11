@@ -3,23 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Valve : MonoBehaviour
+public class ButtonPress : MonoBehaviour
 {
-    public Button startButton;
-    public bool playersReady;
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject ValveButton;
+    [SerializeField] private Sprite OpenValveSprite;
+    [SerializeField] private Sprite CloseValveSprite;
+
+    private bool ValveIsOpen;
+
+    public void Start()
     {
-        
+        ValveIsOpen = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Update()
     {
-        if (playersReady == true && startButton.interactable == false)
+        if (ValveIsOpen)
         {
-            //allows the start button to be used
-            startButton.interactable = true;
+            ValveButton.GetComponent<Image>().sprite = OpenValveSprite;
+        }
+        else
+        {
+            ValveButton.GetComponent<Image>().sprite = CloseValveSprite;
+        }
+    }
+
+    public void OnClick()
+    {
+        ValveIsOpen = !ValveIsOpen;
+        if (ValveIsOpen)
+        {
+            Debug.Log("Valve open");
+        }
+        else
+        {
+            Debug.Log("Valve closed");
         }
     }
 }
