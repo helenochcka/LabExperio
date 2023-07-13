@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 055ee1642dc7dbb4fad61e81308074d1
+guid: 5e3098e23a6dfda4db9d014d1d47d3e4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,148 +123,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bottle
+      name: Closed Valve
       rect:
         serializedVersion: 2
-        x: 2
-        y: 147
-        width: 88
-        height: 107
+        x: 4
+        y: 351
+        width: 248
+        height: 248
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 91fa1ee2db51a8d4186f5a0972e9e302
-      internalID: -1921817758
+      spriteID: a6abd3d4344e3c7448650c326a47020d
+      internalID: -867188301
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ElbowTube
+      name: Open Valve
       rect:
         serializedVersion: 2
-        x: 90
-        y: 100
-        width: 26
-        height: 73
+        x: 30
+        y: 74
+        width: 200
+        height: 248
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d272a9ae6b71084db36267a184b12f1
-      internalID: 213655139
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Flask
-      rect:
-        serializedVersion: 2
-        x: 82
-        y: 4
-        width: 77
-        height: 96
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 11e2a227d53ec904a97fdb86d50f96d0
-      internalID: 1690050191
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tube
-      rect:
-        serializedVersion: 2
-        x: 122
-        y: 100
-        width: 179
-        height: 93
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9d08167672d22f54da33d87d8dfa2520
-      internalID: -1835005197
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Dropper
-      rect:
-        serializedVersion: 2
-        x: 197
-        y: 24
-        width: 9
-        height: 76
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9839cd0ce1b65f049b457c3636a9b3bf
-      internalID: -48433091
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Glass
-      rect:
-        serializedVersion: 2
-        x: 287
-        y: 10
-        width: 51
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a061bd317177e87458200c1ec505093a
-      internalID: 1632826584
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pressure Gauge
-      rect:
-        serializedVersion: 2
-        x: 301
-        y: 94
-        width: 53
-        height: 99
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 710c6bbbeab992c48821ca2e8be4b34a
-      internalID: -121908083
+      spriteID: a790bf265af190f4ca7bc52d733c3ede
+      internalID: 1382368876
       vertices: []
       indices: 
       edges: []
@@ -280,15 +175,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bottle: -1921817758
-      Close Valve: 509240541
-      Dropper: -48433091
-      ElbowTube: 213655139
-      Flask: 1690050191
-      Glass: 1632826584
-      Open Valve: -944203253
-      Pressure Gauge: -121908083
-      Tube: -1835005197
+      Closed Valve: -867188301
+      Open Valve: 1382368876
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
