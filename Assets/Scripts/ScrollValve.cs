@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class ScrollValve : MonoBehaviour
 {
-    [SerializeField] private Sprite OpenValveSprite;
-    [SerializeField] private Sprite CloseValveSprite;
+    [SerializeField] Sprite OpenValveSprite;
+    [SerializeField] Sprite CloseValveSprite;
 
     private decimal ValveOpeningDegree;
     private decimal WheelSpeed = 0.05m;

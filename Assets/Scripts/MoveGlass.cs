@@ -6,7 +6,6 @@ public class MoveGlass : MonoBehaviour
 {
     private decimal GlassPosition;
     private decimal WheelSpeed = 0.02m;
-    private float OffsetValue = 0.02f;
 
     public void Start()
     {
@@ -26,7 +25,7 @@ public class MoveGlass : MonoBehaviour
             if (GlassPosition <= 1.0m & GlassPosition > 0.0m)
             {
                 GlassPosition -= WheelSpeed;
-                this.transform.Translate(0, -OffsetValue, 0, Space.Self);
+                this.transform.Translate(0, (float)-WheelSpeed, 0, Space.Self);
             }
         }
         else if (scroll > 0.0f)
@@ -34,7 +33,7 @@ public class MoveGlass : MonoBehaviour
             if (GlassPosition < 1.0m & GlassPosition >= 0.0m)
             {
                 GlassPosition += WheelSpeed;
-                this.transform.Translate(0, OffsetValue, 0, Space.Self);
+                this.transform.Translate(0, (float)WheelSpeed, 0, Space.Self);
             }
         }
     }
