@@ -4,45 +4,43 @@ using UnityEngine;
 
 public class MoveGlass : MonoBehaviour
 {
-    private int GlassPosition;
-    private bool UpButtonClicked;
-    private bool DownButtonClicked;
-    private float S = 0.5f;
+    private decimal GlassPosition;
+    private decimal WheelSpeed = 0.02m;
 
     public void Start()
     {
-        GlassPosition = 0;
+        GlassPosition = 0.0m;
     }
 
-    public void OnClickUpButton()
+    void OnMouseEnter()
     {
-        if (GlassPosition == 0 || GlassPosition == 1)
+        Debug.Log("Mouse Enter");
+    }
+
+    void OnMouseOver()
+    {
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
+        if (scroll < 0.0f)
         {
-            UpButtonClicked = true;
-            GlassPosition++;
+            if (GlassPosition <= 1.0m & GlassPosition > 0.0m)
+            {
+                GlassPosition -= WheelSpeed;
+                this.transform.Translate(0, (float)-WheelSpeed, 0, Space.Self);
+            }
+        }
+        else if (scroll > 0.0f)
+        {
+            if (GlassPosition < 1.0m & GlassPosition >= 0.0m)
+            {
+                GlassPosition += WheelSpeed;
+                this.transform.Translate(0, (float)WheelSpeed, 0, Space.Self);
+            }
         }
     }
 
-    public void OnClickDownButton()
+    void OnMouseExit()
     {
-        if (GlassPosition == 2 || GlassPosition == 1)
-        {
-            DownButtonClicked = true;
-            GlassPosition--;
-        }
-    }
-
-    public void Update()
-    {
-        if (UpButtonClicked)
-        {
-            this.transform.Translate(0, S, 0, Space.Self);
-            UpButtonClicked = false;
-        }
-        if (DownButtonClicked)
-        {
-            this.transform.Translate(0, -S, 0, Space.Self);
-            DownButtonClicked = false;
-        }
+        Debug.Log("Mouse Exit");
+        Debug.Log(GlassPosition);
     }
 }
