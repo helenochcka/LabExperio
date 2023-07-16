@@ -1,20 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MoveGlass : MonoBehaviour
 {
-    private decimal GlassPosition;
-    private decimal WheelSpeed = 0.02m;
+    public decimal GlassPosition;
+    private readonly decimal _wheelSpeed = 0.02m;
 
     public void Start()
     {
         GlassPosition = 0.0m;
-    }
-
-    void OnMouseEnter()
-    {
-        Debug.Log("Mouse Enter");
     }
 
     void OnMouseOver()
@@ -24,23 +17,22 @@ public class MoveGlass : MonoBehaviour
         {
             if (GlassPosition <= 1.0m & GlassPosition > 0.0m)
             {
-                GlassPosition -= WheelSpeed;
-                this.transform.Translate(0, (float)-WheelSpeed, 0, Space.Self);
+                GlassPosition -= _wheelSpeed;
+                this.transform.Translate(0, (float)-_wheelSpeed, 0, Space.Self);
             }
         }
         else if (scroll > 0.0f)
         {
             if (GlassPosition < 1.0m & GlassPosition >= 0.0m)
             {
-                GlassPosition += WheelSpeed;
-                this.transform.Translate(0, (float)WheelSpeed, 0, Space.Self);
+                GlassPosition += _wheelSpeed;
+                this.transform.Translate(0, (float)_wheelSpeed, 0, Space.Self);
             }
         }
     }
 
     void OnMouseExit()
     {
-        Debug.Log("Mouse Exit");
         Debug.Log(GlassPosition);
     }
 }
