@@ -1,10 +1,9 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ScrollValve : MonoBehaviour
 {
-    //[SerializeField] Sprite OpenValveSprite;
-    //[SerializeField] Sprite CloseValveSprite;
+    [SerializeField] Sprite OpenValveSprite;
+    [SerializeField] Sprite CloseValveSprite;
 
     public decimal ValveOpeningDegree;
     private readonly decimal _wheelSpeed = 0.05m;
@@ -14,17 +13,18 @@ public class ScrollValve : MonoBehaviour
         ValveOpeningDegree = 0.0m;
     }
 
-    /*public void Update()
+    public void Update()
     {
-        if (ValveOpeningDegree <= 1.0m & ValveOpeningDegree >= 0.3m)
+        if (ValveOpeningDegree % 0.02m == 0)
         {
-            this.GetComponent<Image>().sprite = OpenValveSprite;
+            this.GetComponent<SpriteRenderer>().sprite = OpenValveSprite;
         }
         else
         {
-            this.GetComponent<Image>().sprite = CloseValveSprite;
+            this.GetComponent<SpriteRenderer>().sprite = CloseValveSprite;
         }
-    }*/
+    }
+
 
     void OnMouseOver()
     {
@@ -43,6 +43,7 @@ public class ScrollValve : MonoBehaviour
                 ValveOpeningDegree += _wheelSpeed;
             }
         }
+
     }
 
     void OnMouseExit()
