@@ -2,59 +2,92 @@
 
 public class PressureGauge : MonoBehaviour
 {
-    [SerializeField] GameObject Glass;
-    [SerializeField] GameObject Valve;
+    [SerializeField] GameObject Flask;
     //[SerializeField] GameObject Solution;
     [SerializeField] GameObject LeftState;
     [SerializeField] GameObject RightState;
 
-    private MoveGlass _moveGlass;
-    private ScrollValve _scrollValve;
-
-    private float _pressureGaugePosition;
-    private Vector3 _startLeftStateVector3;
-    private Vector3 _startRightStateVector3;
+    private BlowBubbles _blowBubbles;
+    private FillFlask _fillFlask;
+    //private NameClass _nameClass;
+    private Vector3 _startScaleLeftState;
+    private Vector3 _startScaleRightState;
 
     void Start()
     {
-        _moveGlass = Glass.GetComponent<MoveGlass>();
-        _scrollValve = Valve.GetComponent<ScrollValve>();
-        //Solution.GetComponent<>();
-        _startLeftStateVector3 = LeftState.transform.position;
-        _startRightStateVector3 = RightState.transform.position;
+        _fillFlask = Flask.GetComponent<FillFlask>();
+        _blowBubbles = this.GetComponent<BlowBubbles>();
+        //_nameClass = Solution.GetComponent<NameClass>();
+        _startScaleLeftState = LeftState.transform.localScale;
+        _startScaleRightState = RightState.transform.localScale;
     }
 
     void Update()
     {
-        LeftState.transform.position = new Vector3(_startLeftStateVector3.x, _startLeftStateVector3.y - MovePressure(_moveGlass.GlassPosition, _scrollValve.ValveOpeningDegree), _startLeftStateVector3.z);
-        RightState.transform.position = new Vector3(_startRightStateVector3.x, _startRightStateVector3.y + MovePressure(_moveGlass.GlassPosition, _scrollValve.ValveOpeningDegree), _startRightStateVector3.z);
+        if (_fillFlask.FlaskIsFullness == false)
+        {
+            EstablishValueStates(_blowBubbles.EstablishingProcess, CheckSolution("0")); //_nameClass.Concentration
+        }
+        else
+        {
+            //???
+        }
     }
 
-    private float MovePressure(decimal _glassPosition, decimal _valveOpeningDegree) //add a concentration parameter
+    private float CheckSolution(string concentration) //add real value
     {
-        if (_valveOpeningDegree >= 0.25m & _valveOpeningDegree <= 0.35m) //the valve is in the correct position
+    float pressureGaugePosition;
+        switch (concentration)
         {
-            if (_glassPosition >= 0.44m & _glassPosition <= 0.54m) //the dropper is in the correct position
-            {
-                _pressureGaugePosition = 0.5f; //at different concentration values
-            }
-            else if (_glassPosition < 0.44m)    //the dropper doesn't touch with liquid
-            {
-                _pressureGaugePosition = 0f;
-            }
-            else                                //the dropper is immersed too deeply
-            {
-                _pressureGaugePosition = 0f;
-            }
+            case "0":
+                pressureGaugePosition = 1.2f;
+                break;
+            case "0.1":
+                pressureGaugePosition = 1f;
+                break;
+            case "0.2":
+                pressureGaugePosition = 1f;
+                break;
+            case "0.4":
+                pressureGaugePosition = 1f;
+                break;
+            case "0.8":
+                pressureGaugePosition = 1f;
+                break;
+            case "1.6":
+                pressureGaugePosition = 1f;
+                break;
+            case "3.2":
+                pressureGaugePosition = 1f;
+                break;
+            default:
+                pressureGaugePosition = 1f;
+                break;
         }
-        else if (_valveOpeningDegree < 0.25m)   //the valve is closed
+        return pressureGaugePosition;
+    }
+
+    private void EstablishValueStates(string establishingProcess, float pressureGaugePosition) //add smoothly transform
+    {
+        if (establishingProcess.Equals("Inactive"))
         {
-            _pressureGaugePosition = 0f;
+            LeftState.transform.localScale = _startScaleLeftState;
+            RightState.transform.localScale = _startScaleRightState;
         }
-        else                                  //the valve is too open
+        else if (establishingProcess.Equals("SlowActive"))
         {
-            _pressureGaugePosition = 0f;
+            LeftState.transform.localScale = new Vector3(_startScaleLeftState.x, _startScaleLeftState.y / pressureGaugePosition, _startScaleLeftState.z);
+            RightState.transform.localScale = new Vector3(_startScaleRightState.x, _startScaleRightState.y * pressureGaugePosition, _startScaleRightState.z);
         }
-        return _pressureGaugePosition;
+        else if (establishingProcess.Equals("FastActive"))
+        {
+            LeftState.transform.localScale = new Vector3(_startScaleLeftState.x, _startScaleLeftState.y * pressureGaugePosition, _startScaleLeftState.z);
+            RightState.transform.localScale = new Vector3(_startScaleRightState.x, _startScaleRightState.y / pressureGaugePosition, _startScaleRightState.z);
+        }
+        else
+        {
+            LeftState.transform.localScale = _startScaleLeftState;
+            RightState.transform.localScale = _startScaleRightState;
+        }
     }
 }
