@@ -4,7 +4,7 @@ public class FillFlask : MonoBehaviour
 {
     [SerializeField] GameObject ElbowTube;
     [SerializeField] GameObject Warning;
-    public bool FlaskIsFullness;
+    public bool FlaskIsFull;
     public float _flaskFullnessValue;
 
     private DripWater _dripWater;
@@ -30,10 +30,10 @@ public class FillFlask : MonoBehaviour
         {
             FastFillingFlask();
         }
-        FlaskIsFullness = CheckFillFlask(_flaskFullnessValue);
+        FlaskIsFull = IsFlaskFull(_flaskFullnessValue);
     }
 
-    private bool CheckFillFlask(float flaskFullnessValue)
+    private bool IsFlaskFull(float flaskFullnessValue)
     {
         bool FlaskIsFullness;
         if (flaskFullnessValue < 100)

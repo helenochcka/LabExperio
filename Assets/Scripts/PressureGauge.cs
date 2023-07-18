@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PressureGauge : MonoBehaviour
 {
@@ -28,7 +26,7 @@ public class PressureGauge : MonoBehaviour
     void Update()
     {
         _itemClass = _inventoryManager.items[6].GetItem();
-        if (_fillFlask.FlaskIsFullness == false)
+        if (_fillFlask.FlaskIsFull == false)
         {
             EstablishValueStates(_blowBubbles.EstablishingProcess, CheckSolution(_itemClass.itemName));
         }
@@ -87,11 +85,6 @@ public class PressureGauge : MonoBehaviour
         {
             LeftState.transform.localScale = new Vector3(_startScaleLeftState.x, _startScaleLeftState.y * pressureGaugePosition, _startScaleLeftState.z);
             RightState.transform.localScale = new Vector3(_startScaleRightState.x, _startScaleRightState.y / pressureGaugePosition, _startScaleRightState.z);
-        }
-        else
-        {
-            LeftState.transform.localScale = _startScaleLeftState;
-            RightState.transform.localScale = _startScaleRightState;
         }
     }
 }

@@ -1,14 +1,11 @@
-using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class ScrollValve : MonoBehaviour
 {
     [SerializeField] GameObject Flask;
     public decimal ValveOpeningDegree;
 
-    private readonly decimal _wheelSpeed = 0.05m;
+    private decimal _wheelSpeed = 0.05m;
     private FillFlask _fillFlask;
 
     public void Start()
@@ -19,7 +16,7 @@ public class ScrollValve : MonoBehaviour
 
     public void Update()
     {
-        if (_fillFlask.FlaskIsFullness == true) 
+        if (_fillFlask.FlaskIsFull == true) 
         {
             ValveOpeningDegree = 0.0m;
         }

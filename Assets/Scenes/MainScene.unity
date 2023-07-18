@@ -3324,7 +3324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ElbowTube: {fileID: 1857435193}
   Warning: {fileID: 65794085}
-  FlaskIsFullness: 0
+  FlaskIsFull: 0
   _flaskFullnessValue: 0
 --- !u!114 &1847233367
 MonoBehaviour:
