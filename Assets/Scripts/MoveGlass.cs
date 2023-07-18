@@ -4,6 +4,7 @@ public class MoveGlass : MonoBehaviour
 {
     [SerializeField] GameObject Item;
     public decimal GlassPosition;
+
     private readonly decimal _wheelSpeed = 0.02m;
 
     public void Start()
