@@ -3,8 +3,11 @@ using UnityEngine;
 public class BlowBubbles : MonoBehaviour
 {
     [SerializeField] GameObject Glass;
+    [SerializeField] GameObject Bubbles;
     [SerializeField] GameObject ElbowTube;
     public string EstablishingProcess;
+
+    public Animator _anim;
 
     private MoveGlass _moveGlass;
     private DripWater _dripWater;
@@ -13,6 +16,7 @@ public class BlowBubbles : MonoBehaviour
     {
         _moveGlass = Glass.GetComponent<MoveGlass>();
         _dripWater = ElbowTube.GetComponent<DripWater>();
+        _anim = Bubbles.GetComponent<Animator>();
     }
 
     void Update()
@@ -32,17 +36,17 @@ public class BlowBubbles : MonoBehaviour
             if (glassPosition >= 0.44m & glassPosition <= 0.54m)
             {
                 establishingProcess = "SlowActive";
-                //add animation slow blow bubble (1 time per 4 sec)
+                _anim.SetTrigger("PlayBlowOneBubble");
             }
             else if (glassPosition < 0.44m)
             {
                 establishingProcess = "Inactive";
-                //
+                _anim.SetTrigger("Stop");
             }
             else
             {
                 establishingProcess = "FastActive";
-                //add animation fast blow bubble (1 time per 0.4 sec)
+                _anim.SetTrigger("PlayBlowManyBubble");
             }
         }
         else if (drippingProcess.Equals("FastDrip"))
@@ -50,17 +54,17 @@ public class BlowBubbles : MonoBehaviour
             if (glassPosition >= 0.44m & glassPosition <= 0.54m)
             {
                 establishingProcess = "FastActive";
-                //add animation fast blow bubble (1 time per 0.4 sec)
+                _anim.SetTrigger("PlayBlowManyBubble");
             }
             else if (glassPosition < 0.44m)
             {
                 establishingProcess = "Inactive";
-                //
+                _anim.SetTrigger("Stop");
             }
             else
             {
                 establishingProcess = "SlowActive";
-                //add animation slow blow bubble (1 time per 4 sec)
+                _anim.SetTrigger("PlayBlowOneBubble");
             }
         }
         else
