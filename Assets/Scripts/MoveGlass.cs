@@ -18,7 +18,7 @@ public class MoveGlass : MonoBehaviour
             if (GlassPosition <= 1.0m & GlassPosition > 0.0m)
             {
                 GlassPosition -= _wheelSpeed;
-                this.transform.Translate(0, (float)-_wheelSpeed, 0, Space.Self);
+                this.transform.Translate(0, (float)-_wheelSpeed*50, 0);
             }
         }
         else if (scroll > 0.0f)
@@ -26,7 +26,7 @@ public class MoveGlass : MonoBehaviour
             if (GlassPosition < 1.0m & GlassPosition >= 0.0m)
             {
                 GlassPosition += _wheelSpeed;
-                this.transform.Translate(0, (float)_wheelSpeed, 0, Space.Self);
+                this.transform.Translate(0, (float)_wheelSpeed*50, 0);
             }
         }
     }
