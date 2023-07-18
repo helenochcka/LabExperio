@@ -227,6 +227,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8349631517217177924, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -334,6 +338,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7582255670278997482, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349631517217177924, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
+      propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -566,6 +574,8 @@ MonoBehaviour:
     quantity: 1
   - item: {fileID: 11400000, guid: 77cbb3a7461c38549acf29644eff3173, type: 2}
     quantity: 1
+  - item: {fileID: 11400000, guid: 7acddff0959f4f24194cfb3f9bea41ef, type: 2}
+    quantity: 1
 --- !u!224 &1524833155 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7582255670278997482, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
@@ -695,10 +705,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -853,6 +863,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7582255670278997482, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349631517217177924, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
+      propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1151,6 +1165,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8349631517217177924, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349631517217177924, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
+      propertyPath: m_Color.b
+      value: 0.43921572
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349631517217177924, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
+      propertyPath: m_Color.g
+      value: 0.43921572
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349631517217177924, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
+      propertyPath: m_Color.r
+      value: 0.43921572
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1265,6 +1295,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8349631517217177924, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1374,6 +1408,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8349631517217177924, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1481,6 +1519,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7582255670278997482, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349631517217177924, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
+      propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
