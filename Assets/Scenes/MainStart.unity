@@ -175,6 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d5760a10d07fa49a03b46940214741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 1840197062}
 --- !u!1 &578068532
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +265,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 595168360}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: ca99c006212e8654ab6e5cb19a0fa62c, type: 2}
   m_CullingMode: 0
@@ -1619,6 +1620,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1840197061}
   - component: {fileID: 1840197062}
+  - component: {fileID: 1840197063}
   m_Layer: 0
   m_Name: LoaderScene
   m_TagString: Untagged
@@ -1651,7 +1653,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1840197060}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 4c4d8a23a7bb9a14c9c90a52af5a004c, type: 2}
   m_CullingMode: 0
@@ -1664,6 +1666,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1840197063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840197060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c41529eb47cbb498d7470ca403e828, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1890812559
 GameObject:
   m_ObjectHideFlags: 0
