@@ -1,4 +1,7 @@
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class ScrollValve : MonoBehaviour
 {
@@ -17,14 +20,13 @@ public class ScrollValve : MonoBehaviour
     {
         if (ValveOpeningDegree % 0.02m == 0)
         {
-            this.GetComponent<SpriteRenderer>().sprite = OpenValveSprite;
+            this.GetComponent<UnityEngine.UI.Image>().sprite = OpenValveSprite;
         }
         else
         {
-            this.GetComponent<SpriteRenderer>().sprite = CloseValveSprite;
+            this.GetComponent<UnityEngine.UI.Image>().sprite = CloseValveSprite;
         }
     }
-
 
     void OnMouseOver()
     {
