@@ -1808,19 +1808,19 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2007284075}
+  - {fileID: 1282396586}
   - {fileID: 564751360}
   - {fileID: 1579243722}
   - {fileID: 194165598}
   - {fileID: 389747848}
   - {fileID: 537432374}
   - {fileID: 39346066}
-  - {fileID: 1857435194}
-  - {fileID: 1282396586}
   - {fileID: 1847233364}
-  - {fileID: 67985069}
+  - {fileID: 1857435194}
   - {fileID: 1930086965}
-  - {fileID: 606277011}
   - {fileID: 667989060}
+  - {fileID: 606277011}
+  - {fileID: 67985069}
   - {fileID: 1829610534}
   - {fileID: 1408083765}
   - {fileID: 65794086}
@@ -2089,7 +2089,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -267, y: 328.9}
+  m_AnchoredPosition: {x: -267.00006, y: 328.89996}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: -0}
 --- !u!222 &1282396588
@@ -2356,7 +2356,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -82.95349, y: 99.59242}
+  m_AnchoredPosition: {x: -82.95349, y: 99.59241}
   m_SizeDelta: {x: 144.87, y: 174.13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1579243723
@@ -3543,7 +3543,7 @@ GameObject:
   - component: {fileID: 1930086967}
   - component: {fileID: 1930086966}
   m_Layer: 5
-  m_Name: Water in bottle
+  m_Name: Water in Tube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3566,8 +3566,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 514.4463, y: -22.899961}
-  m_SizeDelta: {x: 122, y: 39}
+  m_AnchoredPosition: {x: 514.95, y: -21.93031}
+  m_SizeDelta: {x: 123.8, y: 40.9394}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1930086966
 MonoBehaviour:
