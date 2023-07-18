@@ -42,7 +42,7 @@ public class InventoryManager : MonoBehaviour
        
         RefreshUI();
 
-        Add(itemToAdd, 1);
+        Add(itemToAdd, 0);
         Remove(itemToRemove);
 
     }
@@ -74,10 +74,14 @@ public class InventoryManager : MonoBehaviour
                 slots[i].transform.GetChild(0).GetComponent<Image>().enabled = true;
                 slots[i].transform.GetChild(0).GetComponent<Image>().sprite = items[i].GetItem().itemIcon;
 
-                if(items[i].GetItem().isStackable)
-                    slots[i].transform.GetChild(1).GetComponent<Text>().text = items[i].GetQuantity() + "";
+                if (items[i].GetItem().isStackable)
+                { 
+                    slots[i].transform.GetChild(1).GetComponent<Text>().text = items[i].GetQuantity() + ""; 
+                }
                 else
-                    slots[i].transform.GetChild(1).GetComponent<Text>().text = "";
+                { 
+                    slots[i].transform.GetChild(1).GetComponent<Text>().text = ""; 
+                }
             }
             catch
             {
@@ -90,25 +94,25 @@ public class InventoryManager : MonoBehaviour
 
     public bool Add(ItemClass item, int quantity)
     {
-      
         SlotClass slot = Contains(item);
-        if (slot != null || slot.GetItem().isStackable)
+        if (slot != null && slot.GetItem().isStackable)
+        {
             slot.AddQuantity(1);
+        }
         else
         {
             for (int i = 0; i < items.Length; i++)
             {
                 if (items[i].GetItem() == null)
-                { 
+                {
                     items[i].AddItem(item, quantity);
-                    break;
+                    RefreshUI();
+                    return true;
                 }
             }
-            
         }
 
-        RefreshUI();
-        return true;
+        return false;
     }
 
     public bool Remove(ItemClass item)
