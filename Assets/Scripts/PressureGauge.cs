@@ -21,7 +21,6 @@ public class PressureGauge : MonoBehaviour
         _fillFlask = Flask.GetComponent<FillFlask>();
         _blowBubbles = this.GetComponent<BlowBubbles>();
         _inventoryManager = Solution.GetComponent<InventoryManager>();
-        _itemClass = _inventoryManager.items[6].GetItem();
         _startScaleLeftState = LeftState.transform.localScale;
         _startScaleRightState = RightState.transform.localScale;
     }

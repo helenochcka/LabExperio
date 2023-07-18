@@ -5,13 +5,17 @@ using UnityEngine;
 public class DripWater : MonoBehaviour
 {
     [SerializeField] GameObject Valve;
+    [SerializeField] GameObject Drops;
     public string DrippingProcess;
+    
+    public Animator _anim;
 
     private ScrollValve _scrollValve;
 
     void Start()
     {
         _scrollValve = Valve.GetComponent<ScrollValve>();
+        _anim = Drops.GetComponent<Animator>();
     }
 
     void Update()
@@ -25,16 +29,17 @@ public class DripWater : MonoBehaviour
         if (valveOpeningDegree >= 0.25m & valveOpeningDegree <= 0.35m)
         {
             drippingProcess = "SlowDrip";
-            //add animation slow drip water (1 time per 2 sec)
+            _anim.SetTrigger("PlaySlowDripWater");
         }
         else if (valveOpeningDegree < 0.25m)
         {
             drippingProcess = "Inactive";
+            _anim.SetTrigger("Stop");
         }
         else
         {
             drippingProcess = "FastDrip";
-            //add animation fast drip water (1 time per 0.2 sec)
+            _anim.SetTrigger("PlayFastDripWater");
         }
 
         return drippingProcess;
