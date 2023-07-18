@@ -37,6 +37,7 @@ public class BlowBubbles : MonoBehaviour
             else if (glassPosition < 0.44m)
             {
                 establishingProcess = "Inactive";
+                //
             }
             else
             {
@@ -54,6 +55,7 @@ public class BlowBubbles : MonoBehaviour
             else if (glassPosition < 0.44m)
             {
                 establishingProcess = "Inactive";
+                //
             }
             else
             {

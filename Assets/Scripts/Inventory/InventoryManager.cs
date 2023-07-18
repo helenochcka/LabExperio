@@ -12,7 +12,7 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField] private SlotClass[] startingItems;
 
-    private SlotClass[] items;
+    public SlotClass[] items; //make public
 
     private GameObject[] slots;
 
