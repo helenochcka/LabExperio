@@ -18,11 +18,7 @@ public class FillFlask : MonoBehaviour
 
     void Update()
     {
-        if (_dripWater.DrippingProcess.Equals("Inactive"))
-        {
-            //???
-        }
-        else if (_dripWater.DrippingProcess.Equals("SlowDrip"))
+        if (_dripWater.DrippingProcess.Equals("SlowDrip"))
         {
             SlowFillingFlask();
         }

@@ -5,7 +5,7 @@ public class ScrollValve : MonoBehaviour
     [SerializeField] GameObject Flask;
     public decimal ValveOpeningDegree;
 
-    private decimal _wheelSpeed = 0.05m;
+    private readonly decimal _wheelSpeed = 0.05m;
     private FillFlask _fillFlask;
 
     public void Start()
@@ -18,7 +18,7 @@ public class ScrollValve : MonoBehaviour
     {
         if (_fillFlask.FlaskIsFull == true) 
         {
-            ValveOpeningDegree = 0.0m;
+            ValveOpeningDegree = -1.0m;
         }
     }
 
@@ -30,7 +30,7 @@ public class ScrollValve : MonoBehaviour
             if (ValveOpeningDegree <= 1.0m & ValveOpeningDegree > 0.0m)
             {
                 ValveOpeningDegree -= _wheelSpeed;
-                this.transform.Rotate(0,0, (float)_wheelSpeed*100);
+                this.transform.Rotate(0,0, (float)_wheelSpeed*120);
             }
         }
         else if (scroll > 0.0f)
@@ -38,7 +38,7 @@ public class ScrollValve : MonoBehaviour
             if (ValveOpeningDegree < 1.0m & ValveOpeningDegree >= 0.0m)
             {
                 ValveOpeningDegree += _wheelSpeed;
-                this.transform.Rotate(0, 0, (float)-_wheelSpeed*100);
+                this.transform.Rotate(0, 0, (float)-_wheelSpeed*120);
             }
         }
 
