@@ -18,4 +18,9 @@ public class MainMenu : MonoBehaviour
         Debug.Log("The end");
         Application.Quit();
     }
+
+    public void BackGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
 }
