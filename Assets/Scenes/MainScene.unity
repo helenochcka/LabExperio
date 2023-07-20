@@ -1067,8 +1067,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemCursor: {fileID: 1104881881}
   slotHolder: {fileID: 660962414}
-  itemToAdd: {fileID: 0}
-  itemToRemove: {fileID: 0}
   startingItems:
   - item: {fileID: 11400000, guid: 3d1cf035675a0f549b849e717f8ef48d, type: 2}
     quantity: 1
@@ -2536,7 +2534,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -82.95349, y: 99.59242}
+  m_AnchoredPosition: {x: -82.95349, y: 99.59241}
   m_SizeDelta: {x: 144.87, y: 174.13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1579243723
@@ -3996,7 +3994,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.5464191, y: 0}
+  m_AnchoredPosition: {x: -0.000042677, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2007284076
