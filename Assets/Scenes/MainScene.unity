@@ -327,7 +327,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d83bc286314ba84498f1cbb7f0f6f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Flask: {fileID: 1847233363}
   Solution: {fileID: 496732099}
   LeftState: {fileID: 606277010}
   RightState: {fileID: 667989059}
@@ -1069,19 +1068,12 @@ MonoBehaviour:
   slotHolder: {fileID: 660962414}
   startingItems:
   - item: {fileID: 11400000, guid: 3d1cf035675a0f549b849e717f8ef48d, type: 2}
-    quantity: 1
   - item: {fileID: 11400000, guid: 37da51461be00234c8715bc6a3b2974f, type: 2}
-    quantity: 1
   - item: {fileID: 11400000, guid: 2ecdbc225d5ceeb43a0c7f5cb9172b01, type: 2}
-    quantity: 1
   - item: {fileID: 11400000, guid: cb88c076604d9ff4b9bf2bc118ed9dfd, type: 2}
-    quantity: 1
   - item: {fileID: 11400000, guid: 961d3d107cf94cc45a882247f1bec1ca, type: 2}
-    quantity: 1
   - item: {fileID: 11400000, guid: 77cbb3a7461c38549acf29644eff3173, type: 2}
-    quantity: 1
   - item: {fileID: 11400000, guid: 7acddff0959f4f24194cfb3f9bea41ef, type: 2}
-    quantity: 1
   items: []
 --- !u!222 &496732103
 CanvasRenderer:
@@ -1336,7 +1328,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 806.5465, y: 493.5}
+  m_AnchoredPosition: {x: 785.2, y: 491.6}
   m_SizeDelta: {x: 312, y: 93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &564751361
@@ -3322,7 +3314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ElbowTube: {fileID: 1857435193}
   Warning: {fileID: 65794085}
-  FlaskIsFullness: 0
+  FlaskIsFull: 0
   _flaskFullnessValue: 0
 --- !u!114 &1847233367
 MonoBehaviour:
