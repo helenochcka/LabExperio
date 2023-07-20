@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField] private SlotClass[] startingItems;
 
-    public SlotClass[] items; //make public
+    public SlotClass[] items;
 
     private GameObject[] slots;
 
@@ -50,9 +51,9 @@ public class InventoryManager : MonoBehaviour
     private void Update()
     {
         itemCursor.SetActive(isMovingItem);
-        itemCursor.transform.position = Input.mousePosition;
+        itemCursor.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (isMovingItem)
-            itemCursor.GetComponent<Image>().sprite = movingSlot.GetItem().itemIcon;
+            itemCursor.GetComponent<SpriteRenderer>().sprite = movingSlot.GetItem().itemIcon;
         if (Input.GetMouseButtonDown(0))
         { 
             if(isMovingItem)
@@ -71,8 +72,8 @@ public class InventoryManager : MonoBehaviour
         {
             try
             {
-                slots[i].transform.GetChild(0).GetComponent<Image>().enabled = true;
-                slots[i].transform.GetChild(0).GetComponent<Image>().sprite = items[i].GetItem().itemIcon;
+                slots[i].transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+                slots[i].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = items[i].GetItem().itemIcon;
 
                 if (items[i].GetItem().isStackable)
                 { 
@@ -85,8 +86,8 @@ public class InventoryManager : MonoBehaviour
             }
             catch
             {
-                slots[i].transform.GetChild(0).GetComponent<Image>().sprite = null;
-                slots[i].transform.GetChild(0).GetComponent<Image>().enabled = false;
+                slots[i].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = null;
+                slots[i].transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
                 slots[i].transform.GetChild(1).GetComponent<Text>().text = "";
             }
         }
@@ -221,7 +222,7 @@ public class InventoryManager : MonoBehaviour
     {
         for(int i = 0; i < slots.Length; i++)
         {
-            if (Vector2.Distance(slots[i].transform.position, Input.mousePosition) <= 32)
+            if (Vector2.Distance(slots[i].transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition)) <= 32)
                 return items[i];
         }
         return null;

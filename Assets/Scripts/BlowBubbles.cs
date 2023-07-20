@@ -34,12 +34,12 @@ public class BlowBubbles : MonoBehaviour
         }
         else if (drippingProcess.Equals("SlowDrip"))
         {
-            if (glassPosition >= 0.44m & glassPosition <= 0.54m)
+            if (glassPosition >= 0.48m & glassPosition <= 0.56m)
             {
                 establishingProcess = "SlowActive";
                 _anim.SetTrigger("PlayBlowOneBubble");
             }
-            else if (glassPosition < 0.44m)
+            else if (glassPosition < 0.48m)
             {
                 establishingProcess = "Inactive";
                 _anim.SetTrigger("Stop");
@@ -47,25 +47,25 @@ public class BlowBubbles : MonoBehaviour
             else
             {
                 establishingProcess = "FastActive";
-                _anim.SetTrigger("PlayBlowManyBubble");
+                _anim.SetTrigger("Stop");
             }
         }
         else if (drippingProcess.Equals("FastDrip"))
         {
-            if (glassPosition >= 0.44m & glassPosition <= 0.54m)
+            if (glassPosition >= 0.48m & glassPosition <= 0.56m)
             {
                 establishingProcess = "FastActive";
                 _anim.SetTrigger("PlayBlowManyBubble");
             }
-            else if (glassPosition < 0.44m)
+            else if (glassPosition < 0.48m)
             {
                 establishingProcess = "Inactive";
                 _anim.SetTrigger("Stop");
             }
             else
             {
-                establishingProcess = "SlowActive";
-                _anim.SetTrigger("PlayBlowOneBubble");
+                establishingProcess = "FastActive";
+                _anim.SetTrigger("Stop");
             }
         }
         else
