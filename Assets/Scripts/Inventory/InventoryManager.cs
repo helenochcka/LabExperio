@@ -2,18 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class InventoryManager : MonoBehaviour
 {
     [SerializeField] private GameObject itemCursor;
     [SerializeField] private GameObject slotHolder;
-    [SerializeField] private ItemClass itemToAdd;
-    [SerializeField] private ItemClass itemToRemove;
+
 
     [SerializeField] private SlotClass[] startingItems;
 
-    public SlotClass[] items;
+    public SlotClass[] items; //make public
 
     private GameObject[] slots;
 
@@ -43,17 +41,14 @@ public class InventoryManager : MonoBehaviour
        
         RefreshUI();
 
-        Add(itemToAdd, 0);
-        Remove(itemToRemove);
-
     }
 
     private void Update()
     {
         itemCursor.SetActive(isMovingItem);
-        itemCursor.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        itemCursor.transform.position = Input.mousePosition;
         if (isMovingItem)
-            itemCursor.GetComponent<SpriteRenderer>().sprite = movingSlot.GetItem().itemIcon;
+            itemCursor.GetComponent<Image>().sprite = movingSlot.GetItem().itemIcon;
         if (Input.GetMouseButtonDown(0))
         { 
             if(isMovingItem)
@@ -72,81 +67,35 @@ public class InventoryManager : MonoBehaviour
         {
             try
             {
-                slots[i].transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
-                slots[i].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = items[i].GetItem().itemIcon;
-
-                if (items[i].GetItem().isStackable)
-                { 
-                    slots[i].transform.GetChild(1).GetComponent<Text>().text = items[i].GetQuantity() + ""; 
-                }
-                else
-                { 
-                    slots[i].transform.GetChild(1).GetComponent<Text>().text = ""; 
-                }
+                slots[i].transform.GetChild(0).GetComponent<Image>().enabled = true;
+                slots[i].transform.GetChild(0).GetComponent<Image>().sprite = items[i].GetItem().itemIcon;
             }
             catch
             {
-                slots[i].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = null;
-                slots[i].transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
-                slots[i].transform.GetChild(1).GetComponent<Text>().text = "";
+                slots[i].transform.GetChild(0).GetComponent<Image>().sprite = null;
+                slots[i].transform.GetChild(0).GetComponent<Image>().enabled = false;
             }
         }
     }
 
-    public bool Add(ItemClass item, int quantity)
+    public bool Add(ItemClass item )
+
     {
         SlotClass slot = Contains(item);
-        if (slot != null && slot.GetItem().isStackable)
-        {
-            slot.AddQuantity(1);
-        }
-        else
-        {
+
             for (int i = 0; i < items.Length; i++)
             {
                 if (items[i].GetItem() == null)
                 {
-                    items[i].AddItem(item, quantity);
+                   items[i].AddItem(item);
+         
                     RefreshUI();
                     return true;
                 }
-            }
+
         }
 
         return false;
-    }
-
-    public bool Remove(ItemClass item)
-    {
-        SlotClass temp = Contains(item);
-        if (temp != null)
-        {
-            if (temp.GetQuantity() > 1)
-                temp.SubQuantity(1);
-            else
-            {
-                int slotToRemoveIndex = 0;
-
-                for (int i = 0; i < items.Length; i++)
-                {
-                    if (items[i].GetItem() == item)
-                    {
-                        slotToRemoveIndex = i;
-                        break;
-                    }
-                }
-
-                items[slotToRemoveIndex].Clear();
-            }
-        }
-        else
-        {
-            return false;
-        }
-
-         
-         RefreshUI();
-         return true;
     }
 
     public SlotClass Contains(ItemClass item)
@@ -159,6 +108,7 @@ public class InventoryManager : MonoBehaviour
         return null;
 
     }
+
     #endregion Inventory Utils
 
     #region Moving Stuff
@@ -182,7 +132,7 @@ public class InventoryManager : MonoBehaviour
 
         if (originalSlot == null)
         { 
-            Add(movingSlot.GetItem(), movingSlot.GetQuantity());
+            Add(movingSlot.GetItem());
             movingSlot.Clear();
         }
         else
@@ -191,9 +141,8 @@ public class InventoryManager : MonoBehaviour
         {
             if (originalSlot.GetItem() == movingSlot.GetItem())
             {
-                if (originalSlot.GetItem().isStackable)
+                if (originalSlot.GetItem())
                 {
-                    originalSlot.AddQuantity(movingSlot.GetQuantity());
                     movingSlot.Clear();
                 }
                 else
@@ -202,16 +151,16 @@ public class InventoryManager : MonoBehaviour
             else
             {
                 tempSlot = new SlotClass(originalSlot);
-                originalSlot.AddItem(movingSlot.GetItem(), movingSlot.GetQuantity());
-                movingSlot.AddItem(tempSlot.GetItem(), tempSlot.GetQuantity());
-                RefreshUI();
+                originalSlot.AddItem(movingSlot.GetItem());
+                    movingSlot.AddItem(tempSlot.GetItem());
+                    RefreshUI();
                 return true;
             }
         }
         else
         {
-            originalSlot.AddItem(movingSlot.GetItem(), movingSlot.GetQuantity());
-            movingSlot.Clear();
+            originalSlot.AddItem(movingSlot.GetItem());
+                movingSlot.Clear();
         }
         }
         isMovingItem = false;
@@ -222,7 +171,7 @@ public class InventoryManager : MonoBehaviour
     {
         for(int i = 0; i < slots.Length; i++)
         {
-            if (Vector2.Distance(slots[i].transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition)) <= 32)
+            if (Vector2.Distance(slots[i].transform.position, Input.mousePosition) <= 32)
                 return items[i];
         }
         return null;
