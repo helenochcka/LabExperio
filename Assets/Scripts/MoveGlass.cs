@@ -4,6 +4,7 @@ public class MoveGlass : MonoBehaviour
 {
     [SerializeField] GameObject Item;
     public decimal GlassPosition;
+
     private readonly decimal _wheelSpeed = 0.02m;
 
     public void Start()
@@ -19,7 +20,8 @@ public class MoveGlass : MonoBehaviour
             if (GlassPosition <= 1.0m & GlassPosition > 0.0m)
             {
                 GlassPosition -= _wheelSpeed;
-                Item.transform.Translate(0, (float)-_wheelSpeed*100, 0);
+                Item.transform.Translate(0, (float)-_wheelSpeed * 60, 0);
+                this.transform.Translate(0, (float)-_wheelSpeed * 60, 0);
             }
         }
         else if (scroll > 0.0f)
@@ -27,7 +29,8 @@ public class MoveGlass : MonoBehaviour
             if (GlassPosition < 1.0m & GlassPosition >= 0.0m)
             {
                 GlassPosition += _wheelSpeed;
-                Item.transform.Translate(0, (float)_wheelSpeed*100, 0);
+                Item.transform.Translate(0, (float)_wheelSpeed * 60, 0);
+                this.transform.Translate(0, (float)_wheelSpeed * 60, 0);
             }
         }
     }

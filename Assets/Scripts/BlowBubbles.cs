@@ -30,6 +30,7 @@ public class BlowBubbles : MonoBehaviour
         if (drippingProcess.Equals("Inactive"))
         {
             establishingProcess = "Inactive";
+            _anim.SetTrigger("Stop");
         }
         else if (drippingProcess.Equals("SlowDrip"))
         {
@@ -70,6 +71,7 @@ public class BlowBubbles : MonoBehaviour
         else
         {
             establishingProcess = "Inactive";
+            _anim.SetTrigger("Stop");
         }
 
         return establishingProcess;

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DripWater : MonoBehaviour
@@ -31,17 +29,21 @@ public class DripWater : MonoBehaviour
             drippingProcess = "SlowDrip";
             _anim.SetTrigger("PlaySlowDripWater");
         }
-        else if (valveOpeningDegree < 0.25m)
+        else if (valveOpeningDegree >= 0 & valveOpeningDegree < 0.25m)
         {
             drippingProcess = "Inactive";
             _anim.SetTrigger("Stop");
         }
-        else
+        else if (valveOpeningDegree <= 1 & valveOpeningDegree > 0.35m)
         {
             drippingProcess = "FastDrip";
             _anim.SetTrigger("PlayFastDripWater");
         }
-
+        else
+        {
+            drippingProcess = "Inactive";
+            _anim.SetTrigger("StopAll");
+        }
         return drippingProcess;
     }
 }

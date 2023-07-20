@@ -1,7 +1,4 @@
-using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class ScrollValve : MonoBehaviour
 {
@@ -19,9 +16,9 @@ public class ScrollValve : MonoBehaviour
 
     public void Update()
     {
-        if (_fillFlask.FlaskIsFullness == true) 
+        if (_fillFlask.FlaskIsFull == true) 
         {
-            ValveOpeningDegree = 0.0m;
+            ValveOpeningDegree = -1.0m;
         }
     }
 
@@ -33,7 +30,7 @@ public class ScrollValve : MonoBehaviour
             if (ValveOpeningDegree <= 1.0m & ValveOpeningDegree > 0.0m)
             {
                 ValveOpeningDegree -= _wheelSpeed;
-                this.transform.Rotate(0,0, (float)_wheelSpeed*100);
+                this.transform.Rotate(0,0, (float)_wheelSpeed*120);
             }
         }
         else if (scroll > 0.0f)
@@ -41,7 +38,7 @@ public class ScrollValve : MonoBehaviour
             if (ValveOpeningDegree < 1.0m & ValveOpeningDegree >= 0.0m)
             {
                 ValveOpeningDegree += _wheelSpeed;
-                this.transform.Rotate(0, 0, (float)-_wheelSpeed*100);
+                this.transform.Rotate(0, 0, (float)-_wheelSpeed*120);
             }
         }
 

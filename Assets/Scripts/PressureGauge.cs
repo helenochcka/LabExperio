@@ -1,16 +1,12 @@
-﻿using System.ComponentModel;
-using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PressureGauge : MonoBehaviour
 {
-    [SerializeField] GameObject Flask;
     [SerializeField] GameObject Solution;
     [SerializeField] GameObject LeftState;
     [SerializeField] GameObject RightState;
 
     private BlowBubbles _blowBubbles;
-    private FillFlask _fillFlask;
     private InventoryManager _inventoryManager;
     private ItemClass _itemClass;
     private Vector3 _startScaleLeftState;
@@ -18,7 +14,6 @@ public class PressureGauge : MonoBehaviour
 
     void Start()
     {
-        _fillFlask = Flask.GetComponent<FillFlask>();
         _blowBubbles = this.GetComponent<BlowBubbles>();
         _inventoryManager = Solution.GetComponent<InventoryManager>();
         _startScaleLeftState = LeftState.transform.localScale;
@@ -28,14 +23,7 @@ public class PressureGauge : MonoBehaviour
     void Update()
     {
         _itemClass = _inventoryManager.items[6].GetItem();
-        if (_fillFlask.FlaskIsFullness == false)
-        {
-            EstablishValueStates(_blowBubbles.EstablishingProcess, CheckSolution(_itemClass.itemName));
-        }
-        else
-        {
-            //???
-        }
+        EstablishValueStates(_blowBubbles.EstablishingProcess, CheckSolution(_itemClass.itemName));
     }
 
     private float CheckSolution(string concentration) //add real value
@@ -44,28 +32,28 @@ public class PressureGauge : MonoBehaviour
         switch (concentration)
         {
             case "0":
-                pressureGaugePosition = 1.1f;
+                pressureGaugePosition = 1.03f;
                 break;
             case "0.1":
-                pressureGaugePosition = 1.2f;
+                pressureGaugePosition = 1.06f;
                 break;
             case "0.2":
-                pressureGaugePosition = 1.3f;
+                pressureGaugePosition = 1.09f;
                 break;
             case "0.4":
-                pressureGaugePosition = 1.4f;
+                pressureGaugePosition = 1.12f;
                 break;
             case "0.8":
-                pressureGaugePosition = 1.5f;
+                pressureGaugePosition = 1.15f;
                 break;
             case "1.6":
-                pressureGaugePosition = 1.6f;
+                pressureGaugePosition = 1.18f;
                 break;
             case "3.2":
-                pressureGaugePosition = 1.7f;
+                pressureGaugePosition = 1.21f;
                 break;
             default:
-                pressureGaugePosition = 1.8f;
+                pressureGaugePosition = 1.24f;
                 break;
         }
         return pressureGaugePosition;
@@ -87,11 +75,6 @@ public class PressureGauge : MonoBehaviour
         {
             LeftState.transform.localScale = new Vector3(_startScaleLeftState.x, _startScaleLeftState.y * pressureGaugePosition, _startScaleLeftState.z);
             RightState.transform.localScale = new Vector3(_startScaleRightState.x, _startScaleRightState.y / pressureGaugePosition, _startScaleRightState.z);
-        }
-        else
-        {
-            LeftState.transform.localScale = _startScaleLeftState;
-            RightState.transform.localScale = _startScaleRightState;
         }
     }
 }
