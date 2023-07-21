@@ -1,24 +1,27 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ScrollValve : MonoBehaviour
 {
     [SerializeField] GameObject Flask;
-    public decimal ValveOpeningDegree;
+    [SerializeField] GameObject Warning;
 
+    private decimal _valveOpeningDegree;
     private readonly decimal _wheelSpeed = 0.05m;
     private FillFlask _fillFlask;
 
     public void Start()
     {
         _fillFlask = Flask.GetComponent<FillFlask>();
-        ValveOpeningDegree = 0.0m;
+        _valveOpeningDegree = 0.0m;
     }
 
     public void Update()
     {
-        if (_fillFlask.FlaskIsFull == true) 
+        if (_fillFlask.GetFlaskFullnessValue() == 100) 
         {
-            ValveOpeningDegree = -1.0m;
+            _valveOpeningDegree = -1.0m;
+            Warning.SetActive(true);
         }
     }
 
@@ -27,25 +30,22 @@ public class ScrollValve : MonoBehaviour
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         if (scroll < 0.0f)
         {
-            if (ValveOpeningDegree <= 1.0m & ValveOpeningDegree > 0.0m)
+            if (_valveOpeningDegree <= 1.0m & _valveOpeningDegree > 0.0m)
             {
-                ValveOpeningDegree -= _wheelSpeed;
+                _valveOpeningDegree -= _wheelSpeed;
                 this.transform.Rotate(0,0, (float)_wheelSpeed*120);
             }
         }
         else if (scroll > 0.0f)
         {
-            if (ValveOpeningDegree < 1.0m & ValveOpeningDegree >= 0.0m)
+            if (_valveOpeningDegree < 1.0m & _valveOpeningDegree >= 0.0m)
             {
-                ValveOpeningDegree += _wheelSpeed;
+                _valveOpeningDegree += _wheelSpeed;
                 this.transform.Rotate(0, 0, (float)-_wheelSpeed*120);
             }
         }
 
     }
 
-    void OnMouseExit()
-    {
-        Debug.Log(ValveOpeningDegree);
-    }
+    public decimal GetValveOpeningDegree() { return _valveOpeningDegree; }
 }
