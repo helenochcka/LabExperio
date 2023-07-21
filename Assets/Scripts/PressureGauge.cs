@@ -11,6 +11,7 @@ public class PressureGauge : MonoBehaviour
     private Item _item;
     private Vector3 _startScaleLeftState;
     private Vector3 _startScaleRightState;
+    private float _updateDelta;
 
     void Start()
     {
@@ -63,7 +64,7 @@ public class PressureGauge : MonoBehaviour
         return pressureGaugePosition;
     }
 
-    private void EstablishValueStates(string establishingProcess, float pressureGaugePosition) //add smoothly transform
+    private void EstablishValueStates(string establishingProcess, float pressureGaugePosition)
     {
         if (establishingProcess.Equals("Inactive"))
         {
@@ -77,8 +78,8 @@ public class PressureGauge : MonoBehaviour
         }
         else if (establishingProcess.Equals("FastActive"))
         {
-            LeftState.transform.localScale = new Vector3(_startScaleLeftState.x, _startScaleLeftState.y * pressureGaugePosition, _startScaleLeftState.z);
-            RightState.transform.localScale = new Vector3(_startScaleRightState.x, _startScaleRightState.y / pressureGaugePosition, _startScaleRightState.z);
+            LeftState.transform.localScale = new Vector3(_startScaleLeftState.x, _startScaleLeftState.y / (pressureGaugePosition + 0.2f), _startScaleLeftState.z);
+            RightState.transform.localScale = new Vector3(_startScaleRightState.x, _startScaleRightState.y * (pressureGaugePosition + 0.2f), _startScaleRightState.z);
         }
     }
 }
