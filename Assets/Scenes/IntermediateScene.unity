@@ -1279,6 +1279,7 @@ GameObject:
   - component: {fileID: 1536840139}
   - component: {fileID: 1536840138}
   - component: {fileID: 1536840141}
+  - component: {fileID: 1536840142}
   m_Layer: 5
   m_Name: Back_start_button
   m_TagString: Untagged
@@ -1349,7 +1350,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1536840139}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1536840142}
+        m_TargetAssemblyTypeName: SceneTransition, Assembly-CSharp
+        m_MethodName: Transition
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1536840139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1409,6 +1422,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1536840142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536840136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d49f97b6f3466241a6908e10f725d7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneNumber: 0
 --- !u!1 &1693577909
 GameObject:
   m_ObjectHideFlags: 0
@@ -2196,6 +2222,7 @@ GameObject:
   - component: {fileID: 2099719572}
   - component: {fileID: 2099719571}
   - component: {fileID: 2099719574}
+  - component: {fileID: 2099719575}
   m_Layer: 5
   m_Name: lab_one_Button
   m_TagString: Untagged
@@ -2266,7 +2293,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2099719572}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2099719575}
+        m_TargetAssemblyTypeName: SceneTransition, Assembly-CSharp
+        m_MethodName: Transition
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2099719572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2326,6 +2365,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2099719575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099719569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d49f97b6f3466241a6908e10f725d7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneNumber: 2
 --- !u!1 &2136222261
 GameObject:
   m_ObjectHideFlags: 0
