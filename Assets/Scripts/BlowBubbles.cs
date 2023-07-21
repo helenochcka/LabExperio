@@ -54,7 +54,7 @@ public class BlowBubbles : MonoBehaviour
         {
             if (glassPosition >= 0.48m & glassPosition <= 0.56m)
             {
-                establishingProcess = "FastActive";
+                establishingProcess = "SlowActive";
                 Anim.SetTrigger("PlayBlowManyBubble");
             }
             else if (glassPosition < 0.48m)

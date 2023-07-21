@@ -36,28 +36,28 @@ public class PressureGauge : MonoBehaviour
         switch (concentration)
         {
             case 0.0f:
-                pressureGaugePosition = 1.03f;
+                pressureGaugePosition = 1.5f;
                 break;
             case 0.1f:
-                pressureGaugePosition = 1.06f;
-                break;
-            case 0.2f:
-                pressureGaugePosition = 1.09f;
-                break;
-            case 0.4f:
-                pressureGaugePosition = 1.12f;
-                break;
-            case 0.8f:
-                pressureGaugePosition = 1.15f;
-                break;
-            case 1.6f:
                 pressureGaugePosition = 1.18f;
                 break;
+            case 0.2f:
+                pressureGaugePosition = 1.1f;
+                break;
+            case 0.4f:
+                pressureGaugePosition = 1.09f;
+                break;
+            case 0.8f:
+                pressureGaugePosition = 1.08f;
+                break;
+            case 1.6f:
+                pressureGaugePosition = 1.07f;
+                break;
             case 3.2f:
-                pressureGaugePosition = 1.21f;
+                pressureGaugePosition = 1.06f;
                 break;
             default:
-                pressureGaugePosition = 1.24f;
+                pressureGaugePosition = 0.0f;
                 break;
         }
         return pressureGaugePosition;
