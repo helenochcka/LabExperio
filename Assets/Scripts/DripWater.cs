@@ -11,6 +11,7 @@ public class DripWater : MonoBehaviour
 
     void Start()
     {
+        _drippingProcess = "";
         _scrollValve = Valve.GetComponent<ScrollValve>();
         Anim = Drops.GetComponent<Animator>();
     }
@@ -20,7 +21,7 @@ public class DripWater : MonoBehaviour
         _drippingProcess = DrippingWater(_scrollValve.GetValveOpeningDegree());
     }
 
-    public string DrippingWater(decimal valveOpeningDegree)
+    private string DrippingWater(decimal valveOpeningDegree)
     {
         string drippingProcess;
         if (valveOpeningDegree >= 0.25m & valveOpeningDegree <= 0.35m)

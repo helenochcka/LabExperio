@@ -13,6 +13,7 @@ public class BlowBubbles : MonoBehaviour
     
     void Start()
     {
+        _establishingProcess = "";
         _moveGlass = Glass.GetComponent<MoveGlass>();
         _dripWater = ElbowTube.GetComponent<DripWater>();
         Anim = Bubbles.GetComponent<Animator>();
@@ -72,7 +73,6 @@ public class BlowBubbles : MonoBehaviour
             establishingProcess = "Inactive";
             Anim.SetTrigger("Stop");
         }
-
         return establishingProcess;
     }
 

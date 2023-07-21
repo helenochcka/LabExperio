@@ -3,11 +3,13 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
     [SerializeField] GameObject Cursor;
+    [SerializeField] GameObject Glass;
     [SerializeField] GameObject SlotHolder;
     
     public Slot[] Items;
 
     private GameObject[] _slots;
+    private MoveGlass _moveGlass;
     private Slot _movingSlot;
     private Slot _tempSlot;
     private Slot _originalSlot;
@@ -16,6 +18,7 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         _slots = new GameObject[SlotHolder.transform.childCount];
+        _moveGlass = Glass.GetComponent<MoveGlass>();
 
         for (int i = 0; i < SlotHolder.transform.childCount; i++)
             _slots[i] = SlotHolder.transform.GetChild(i).gameObject;
@@ -91,6 +94,13 @@ public class InventoryManager : MonoBehaviour
     private bool BeginItemMove()
     {
         _originalSlot = GetClosesSlot();
+        if (_originalSlot == Items[0])
+        {
+            if (_moveGlass.GetGlassPosition() < 0.0m || _moveGlass.GetGlassPosition() > 0.46m)
+            {
+                return false;
+            }
+        }
         if (_originalSlot == null || _originalSlot.GetItem() == null)
             return false;
 
@@ -106,37 +116,44 @@ public class InventoryManager : MonoBehaviour
         _originalSlot = GetClosesSlot();
 
         if (_originalSlot == null)
-        { 
+        {
             Add(_movingSlot.GetItem());
             _movingSlot.Clear();
         }
         else
         {  
-        if (_originalSlot.GetItem() != null)
-        {
-            if (_originalSlot.GetItem() == _movingSlot.GetItem())
+            if (_originalSlot.GetItem() != null)
             {
-                if (_originalSlot.GetItem())
+                if (_originalSlot.GetItem() == _movingSlot.GetItem())
                 {
-                    _movingSlot.Clear();
+                    if (_originalSlot.GetItem())
+                    {
+                        _movingSlot.Clear();
+                    }
+                    else
+                        return false;
+                }
+                else if (_originalSlot == Items[0])
+                {
+                    if (_moveGlass.GetGlassPosition() < 0.0m || _moveGlass.GetGlassPosition() > 0.46m)
+                    {
+                        return false;
+                    }
                 }
                 else
-                    return false;
+                {
+                    _tempSlot = new Slot(_originalSlot);
+                    _originalSlot.AddItem(_movingSlot.GetItem());
+                    _movingSlot.AddItem(_tempSlot.GetItem());
+                    RefreshUI();
+                    return true;
+                }
             }
             else
             {
-                _tempSlot = new Slot(_originalSlot);
                 _originalSlot.AddItem(_movingSlot.GetItem());
-                    _movingSlot.AddItem(_tempSlot.GetItem());
-                    RefreshUI();
-                return true;
+                    _movingSlot.Clear();
             }
-        }
-        else
-        {
-            _originalSlot.AddItem(_movingSlot.GetItem());
-                _movingSlot.Clear();
-        }
         }
         _isMovingItem = false;
         RefreshUI();
