@@ -5,10 +5,9 @@ public class BlowBubbles : MonoBehaviour
     [SerializeField] GameObject Glass;
     [SerializeField] GameObject Bubbles;
     [SerializeField] GameObject ElbowTube;
-    public string EstablishingProcess;
+    [SerializeField] Animator Anim;
 
-    public Animator _anim;
-
+    private string _establishingProcess;
     private MoveGlass _moveGlass;
     private DripWater _dripWater;
     
@@ -16,12 +15,12 @@ public class BlowBubbles : MonoBehaviour
     {
         _moveGlass = Glass.GetComponent<MoveGlass>();
         _dripWater = ElbowTube.GetComponent<DripWater>();
-        _anim = Bubbles.GetComponent<Animator>();
+        Anim = Bubbles.GetComponent<Animator>();
     }
 
     void Update()
     {
-        EstablishingProcess = BlowingBubbles(_dripWater.DrippingProcess, _moveGlass.GlassPosition);
+        _establishingProcess = BlowingBubbles(_dripWater.GetDrippingProcess(), _moveGlass.GetGlassPosition());
     }
 
     private string BlowingBubbles(string drippingProcess, decimal glassPosition)
@@ -30,24 +29,24 @@ public class BlowBubbles : MonoBehaviour
         if (drippingProcess.Equals("Inactive"))
         {
             establishingProcess = "Inactive";
-            _anim.SetTrigger("Stop");
+            Anim.SetTrigger("Stop");
         }
         else if (drippingProcess.Equals("SlowDrip"))
         {
             if (glassPosition >= 0.48m & glassPosition <= 0.56m)
             {
                 establishingProcess = "SlowActive";
-                _anim.SetTrigger("PlayBlowOneBubble");
+                Anim.SetTrigger("PlayBlowOneBubble");
             }
             else if (glassPosition < 0.48m)
             {
                 establishingProcess = "Inactive";
-                _anim.SetTrigger("Stop");
+                Anim.SetTrigger("Stop");
             }
             else
             {
                 establishingProcess = "FastActive";
-                _anim.SetTrigger("Stop");
+                Anim.SetTrigger("Stop");
             }
         }
         else if (drippingProcess.Equals("FastDrip"))
@@ -55,25 +54,27 @@ public class BlowBubbles : MonoBehaviour
             if (glassPosition >= 0.48m & glassPosition <= 0.56m)
             {
                 establishingProcess = "FastActive";
-                _anim.SetTrigger("PlayBlowManyBubble");
+                Anim.SetTrigger("PlayBlowManyBubble");
             }
             else if (glassPosition < 0.48m)
             {
                 establishingProcess = "Inactive";
-                _anim.SetTrigger("Stop");
+                Anim.SetTrigger("Stop");
             }
             else
             {
                 establishingProcess = "FastActive";
-                _anim.SetTrigger("Stop");
+                Anim.SetTrigger("Stop");
             }
         }
         else
         {
             establishingProcess = "Inactive";
-            _anim.SetTrigger("Stop");
+            Anim.SetTrigger("Stop");
         }
 
         return establishingProcess;
     }
+
+    public string GetEstablishingProcess() { return _establishingProcess; }
 }

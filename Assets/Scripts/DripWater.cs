@@ -4,21 +4,20 @@ public class DripWater : MonoBehaviour
 {
     [SerializeField] GameObject Valve;
     [SerializeField] GameObject Drops;
-    public string DrippingProcess;
-    
-    public Animator _anim;
+    [SerializeField] Animator Anim;
 
+    private string _drippingProcess;
     private ScrollValve _scrollValve;
 
     void Start()
     {
         _scrollValve = Valve.GetComponent<ScrollValve>();
-        _anim = Drops.GetComponent<Animator>();
+        Anim = Drops.GetComponent<Animator>();
     }
 
     void Update()
     {
-        DrippingProcess = DrippingWater(_scrollValve.ValveOpeningDegree);
+        _drippingProcess = DrippingWater(_scrollValve.GetValveOpeningDegree());
     }
 
     public string DrippingWater(decimal valveOpeningDegree)
@@ -27,23 +26,25 @@ public class DripWater : MonoBehaviour
         if (valveOpeningDegree >= 0.25m & valveOpeningDegree <= 0.35m)
         {
             drippingProcess = "SlowDrip";
-            _anim.SetTrigger("PlaySlowDripWater");
+            Anim.SetTrigger("PlaySlowDripWater");
         }
         else if (valveOpeningDegree >= 0 & valveOpeningDegree < 0.25m)
         {
             drippingProcess = "Inactive";
-            _anim.SetTrigger("Stop");
+            Anim.SetTrigger("Stop");
         }
         else if (valveOpeningDegree <= 1 & valveOpeningDegree > 0.35m)
         {
             drippingProcess = "FastDrip";
-            _anim.SetTrigger("PlayFastDripWater");
+            Anim.SetTrigger("PlayFastDripWater");
         }
         else
         {
             drippingProcess = "Inactive";
-            _anim.SetTrigger("StopAll");
+            Anim.SetTrigger("StopAll");
         }
         return drippingProcess;
     }
+
+    public string GetDrippingProcess() { return _drippingProcess; }
 }

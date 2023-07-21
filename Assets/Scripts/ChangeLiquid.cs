@@ -33,7 +33,7 @@ public class ChangeLiquid : MonoBehaviour
 
     void Update()
     {
-        switch (_fillFlask._flaskFullnessValue)
+        switch (_fillFlask.GetFlaskFullnessValue())
         {
             case 4:
                 this.GetComponent<SpriteRenderer>().sprite = u1;

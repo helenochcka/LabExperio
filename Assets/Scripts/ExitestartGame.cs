@@ -9,7 +9,6 @@ public class ExitRestartGame : MonoBehaviour
     }
     public void ExitGame()
     {
-        Debug.Log("The end");
         Application.Quit();
     }
 }
