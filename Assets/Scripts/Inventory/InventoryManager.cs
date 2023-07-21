@@ -133,15 +133,15 @@ public class InventoryManager : MonoBehaviour
                     else
                         return false;
                 }
-                else if (_originalSlot == Items[0])
-                {
-                    if (_moveGlass.GetGlassPosition() < 0.0m || _moveGlass.GetGlassPosition() > 0.46m)
-                    {
-                        return false;
-                    }
-                }
                 else
                 {
+                    if (_originalSlot == Items[0])
+                    {
+                        if (_moveGlass.GetGlassPosition() < 0.0m || _moveGlass.GetGlassPosition() > 0.46m)
+                        {
+                            return false;
+                        }
+                    }
                     _tempSlot = new Slot(_originalSlot);
                     _originalSlot.AddItem(_movingSlot.GetItem());
                     _movingSlot.AddItem(_tempSlot.GetItem());
