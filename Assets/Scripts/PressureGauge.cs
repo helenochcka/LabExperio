@@ -8,7 +8,7 @@ public class PressureGauge : MonoBehaviour
 
     private BlowBubbles _blowBubbles;
     private InventoryManager _inventoryManager;
-    private ItemClass _itemClass;
+    private Item _item;
     private Vector3 _startScaleLeftState;
     private Vector3 _startScaleRightState;
 
@@ -22,34 +22,38 @@ public class PressureGauge : MonoBehaviour
 
     void Update()
     {
-        _itemClass = _inventoryManager.items[6].GetItem();
-        EstablishValueStates(_blowBubbles.EstablishingProcess, CheckSolution(_itemClass.itemName));
+        _item = _inventoryManager.Items[0].GetItem();
+        if (_item != null ) 
+        {
+            EstablishValueStates(_blowBubbles.GetEstablishingProcess(), CheckSolution(_item.itemValue));
+        }
     }
+        
 
-    private float CheckSolution(string concentration) //add real value
+    private float CheckSolution(float concentration)
     {
         float pressureGaugePosition;
         switch (concentration)
         {
-            case "0":
+            case 0.0f:
                 pressureGaugePosition = 1.03f;
                 break;
-            case "0.1":
+            case 0.1f:
                 pressureGaugePosition = 1.06f;
                 break;
-            case "0.2":
+            case 0.2f:
                 pressureGaugePosition = 1.09f;
                 break;
-            case "0.4":
+            case 0.4f:
                 pressureGaugePosition = 1.12f;
                 break;
-            case "0.8":
+            case 0.8f:
                 pressureGaugePosition = 1.15f;
                 break;
-            case "1.6":
+            case 1.6f:
                 pressureGaugePosition = 1.18f;
                 break;
-            case "3.2":
+            case 3.2f:
                 pressureGaugePosition = 1.21f;
                 break;
             default:
