@@ -23,11 +23,12 @@ public class PressureGauge : MonoBehaviour
     void Update()
     {
         _item = _inventoryManager.Items[0].GetItem();
-        if (_item != null )
+        if (_item != null ) 
         {
             EstablishValueStates(_blowBubbles.GetEstablishingProcess(), CheckSolution(_item.itemValue));
         }
     }
+        
 
     private float CheckSolution(float concentration)
     {

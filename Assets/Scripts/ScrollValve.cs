@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ScrollValve : MonoBehaviour
@@ -10,13 +9,13 @@ public class ScrollValve : MonoBehaviour
     private readonly decimal _wheelSpeed = 0.05m;
     private FillFlask _fillFlask;
 
-    public void Start()
+    void Start()
     {
         _fillFlask = Flask.GetComponent<FillFlask>();
         _valveOpeningDegree = 0.0m;
     }
 
-    public void Update()
+    void Update()
     {
         if (_fillFlask.GetFlaskFullnessValue() == 100) 
         {
