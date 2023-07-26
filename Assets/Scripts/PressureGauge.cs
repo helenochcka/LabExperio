@@ -6,16 +6,15 @@ public class PressureGauge : MonoBehaviour
     [SerializeField] GameObject LeftState;
     [SerializeField] GameObject RightState;
 
-    private BlowBubbles _blowBubbles;
+    private BubbleSet _blowBubbles;
     private InventoryManager _inventoryManager;
     private Item _item;
     private Vector3 _startScaleLeftState;
     private Vector3 _startScaleRightState;
-    private float _updateDelta;
 
     void Start()
     {
-        _blowBubbles = this.GetComponent<BlowBubbles>();
+        _blowBubbles = this.GetComponent<BubbleSet>();
         _inventoryManager = Solution.GetComponent<InventoryManager>();
         _startScaleLeftState = LeftState.transform.localScale;
         _startScaleRightState = RightState.transform.localScale;
@@ -26,7 +25,7 @@ public class PressureGauge : MonoBehaviour
         _item = _inventoryManager.Items[0].GetItem();
         if (_item != null ) 
         {
-            EstablishValueStates(_blowBubbles.GetEstablishingProcess(), CheckSolution(_item.itemValue));
+            EstablishValueStates(_blowBubbles.EstablishingProcess, CheckSolution(_item.itemValue));
         }
     }
         

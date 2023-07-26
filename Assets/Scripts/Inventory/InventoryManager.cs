@@ -9,7 +9,7 @@ public class InventoryManager : MonoBehaviour
     public Slot[] Items;
 
     private GameObject[] _slots;
-    private MoveGlass _moveGlass;
+    private Glass _moveGlass;
     private Slot _movingSlot;
     private Slot _tempSlot;
     private Slot _originalSlot;
@@ -18,7 +18,7 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         _slots = new GameObject[SlotHolder.transform.childCount];
-        _moveGlass = Glass.GetComponent<MoveGlass>();
+        _moveGlass = Glass.GetComponent<Glass>();
 
         for (int i = 0; i < SlotHolder.transform.childCount; i++)
             _slots[i] = SlotHolder.transform.GetChild(i).gameObject;
@@ -96,7 +96,7 @@ public class InventoryManager : MonoBehaviour
         _originalSlot = GetClosesSlot();
         if (_originalSlot == Items[0])
         {
-            if (_moveGlass.GetGlassPosition() < 0.0m || _moveGlass.GetGlassPosition() > 0.46m)
+            if (_moveGlass.Position < 0.0m || _moveGlass.Position > 0.46m)
             {
                 return false;
             }
@@ -137,7 +137,7 @@ public class InventoryManager : MonoBehaviour
                 {
                     if (_originalSlot == Items[0])
                     {
-                        if (_moveGlass.GetGlassPosition() < 0.0m || _moveGlass.GetGlassPosition() > 0.46m)
+                        if (_moveGlass.Position < 0.0m || _moveGlass.Position > 0.46m)
                         {
                             return false;
                         }

@@ -7,6 +7,7 @@ public class ExitRestartGame : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
     public void ExitGame()
     {
         Application.Quit();

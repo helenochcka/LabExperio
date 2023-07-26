@@ -24,16 +24,16 @@ public class ChangeLiquid : MonoBehaviour
     [SerializeField] Sprite u19;
     [SerializeField] Sprite u20;
 
-    private FillFlask _fillFlask;
+    private Flask _flask;
 
     void Start()
     {
-        _fillFlask = Flask.GetComponent<FillFlask>();
+        _flask = Flask.GetComponent<Flask>();
     }
 
     void Update()
     {
-        switch (_fillFlask.GetFlaskFullnessValue())
+        switch (_flask.OccurancyLevel)
         {
             case 4:
                 this.GetComponent<SpriteRenderer>().sprite = u1;
