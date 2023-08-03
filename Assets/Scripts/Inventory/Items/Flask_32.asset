@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Flask_32
   m_EditorClassIdentifier: 
   itemValue: 3.2
-  itemIcon: {fileID: 21300000, guid: afd5fa8498b4ec84591bc1052008d6c6, type: 3}
+  itemIcon: {fileID: 21300000, guid: 143d214a0b58c9c448b4d9fc7498ae1b, type: 3}
   itemType: 6
