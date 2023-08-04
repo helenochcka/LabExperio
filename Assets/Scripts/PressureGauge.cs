@@ -2,31 +2,36 @@
 
 public class PressureGauge : MonoBehaviour
 {
-    [SerializeField] GameObject Solution;
     [SerializeField] GameObject LeftState;
     [SerializeField] GameObject RightState;
+    [SerializeField] GameObject Glass;
+    [SerializeField] GameObject Bubbles;
+    [SerializeField] GameObject Valve;
 
-    private BubbleSet _blowBubbles;
-    private InventoryManager _inventoryManager;
-    private Item _item;
+    private Animator _animator;
+    private Glass _glass;
+    private Valve _valve;
+    private string _establishingProcess;
+
     private Vector3 _startScaleLeftState;
     private Vector3 _startScaleRightState;
 
     void Start()
     {
-        _blowBubbles = this.GetComponent<BubbleSet>();
-        _inventoryManager = Solution.GetComponent<InventoryManager>();
+        _establishingProcess = "";
+        _glass = Glass.GetComponent<Glass>();
+        _valve = Valve.GetComponent<Valve>();
+        _animator = Bubbles.GetComponent<Animator>();
+
         _startScaleLeftState = LeftState.transform.localScale;
         _startScaleRightState = RightState.transform.localScale;
     }
 
     void Update()
     {
-        _item = _inventoryManager.Items[0].GetItem();
-        if (_item != null ) 
-        {
-            EstablishValueStates(_blowBubbles.EstablishingProcess, CheckSolution(_item.itemValue));
-        }
+        PlayBlowBubblesAnimation(_valve.DrippingState, _glass.PositionCategory);
+        _establishingProcess = BlowingBubbles(_valve.DrippingState, _glass.PositionCategory);
+        EstablishValueStates(_establishingProcess, CheckSolution(_glass.SolutionConcentration));
     }
         
 
@@ -80,5 +85,74 @@ public class PressureGauge : MonoBehaviour
             LeftState.transform.localScale = new Vector3(_startScaleLeftState.x, _startScaleLeftState.y / (pressureGaugePosition + 0.2f), _startScaleLeftState.z);
             RightState.transform.localScale = new Vector3(_startScaleRightState.x, _startScaleRightState.y * (pressureGaugePosition + 0.2f), _startScaleRightState.z);
         }
+    }
+
+    private string BlowingBubbles(DrippingState drippingState, PositionCategory positionCategory)
+    {
+        string establishingProcess;
+        if (drippingState == DrippingState.NotDripping)
+        {
+            establishingProcess = "Inactive";
+        }
+        else if (drippingState == DrippingState.DrippingSlow)
+        {
+            if (positionCategory == PositionCategory.Correct)
+            {
+                establishingProcess = "SlowActive";
+            }
+            else if (positionCategory == PositionCategory.TooLow)
+            {
+                establishingProcess = "Inactive";
+            }
+            else
+            {
+                establishingProcess = "FastActive";
+            }
+        }
+        else if (drippingState == DrippingState.DrippingFast)
+        {
+            if (positionCategory == PositionCategory.Correct)
+            {
+                establishingProcess = "SlowActive";
+            }
+            else if (positionCategory == PositionCategory.TooLow)
+            {
+                establishingProcess = "Inactive";
+            }
+            else
+            {
+                establishingProcess = "FastActive";
+            }
+        }
+        else
+        {
+            establishingProcess = "Inactive";
+        }
+        return establishingProcess;
+    }
+
+    private void PlayBlowBubblesAnimation(DrippingState drippingState, PositionCategory positionCategory)
+    {
+        AnimatorControllerParameter parameter;
+        if (positionCategory == PositionCategory.Correct)
+        {
+            if (drippingState == DrippingState.DrippingSlow)
+            {
+                parameter = _animator.GetParameter(1);
+            }
+            else if (drippingState == DrippingState.DrippingFast)
+            {
+                parameter = _animator.GetParameter(2);
+            }
+            else
+            {
+                parameter = _animator.GetParameter(0);
+            }
+        }
+        else
+        {
+            parameter = _animator.GetParameter(0);
+        }
+        _animator.SetTrigger(parameter.name);
     }
 }

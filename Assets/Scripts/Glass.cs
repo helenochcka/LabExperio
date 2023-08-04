@@ -2,28 +2,59 @@ using UnityEngine;
 
 public class Glass : MonoBehaviour
 {
+    [SerializeField] GameObject Solution;
     private const decimal MouseWheelStep = 0.02m;
 
     private decimal _position;
+    private PositionCategory _positionCategory;
+    private float _solutionConcentration;
+    private InventoryManager _inventoryManager;
+    private Item _item;
+
+    public float SolutionConcentration => _solutionConcentration;
+    public PositionCategory PositionCategory => _positionCategory;
     public decimal Position => _position;
 
     void Start()
     {
+        _inventoryManager = Solution.GetComponent<InventoryManager>();
         _position = 0.0m;
+    }
+
+    void Update()
+    {
+        _item = _inventoryManager.Items[0].GetItem();
+        if (_item != null)
+            _solutionConcentration = _item.itemValue;
     }
 
     void OnMouseOver()
     {
         float scrollAxisValue = Input.GetAxis("Mouse ScrollWheel");
-        if (scrollAxisValue < 0.0f & (_position > 0.0m & _position <= 1.0m))
+        if (scrollAxisValue < 0.0f && (_position > 0.0m && _position <= 1.0m))
         {
                 _position -= MouseWheelStep;
                 this.transform.Translate(0, (float)-MouseWheelStep, 0);
         }
-        else if (scrollAxisValue > 0.0f & (_position < 1.0m & _position >= 0.0m))
+        else if (scrollAxisValue > 0.0f && (_position < 1.0m && _position >= 0.0m))
         {
                 _position += MouseWheelStep;
                 this.transform.Translate(0, (float)MouseWheelStep, 0);
         }
+        _positionCategory = DeterminePositionCategory(_position);
+    }
+
+    private PositionCategory DeterminePositionCategory(decimal position)
+    {
+        PositionCategory positionCategory;
+
+        if (position >= 0.48m & position <= 0.56m)
+            positionCategory = PositionCategory.Correct;
+        else if (position < 0.48m)
+            positionCategory = PositionCategory.TooLow;
+        else
+            positionCategory = PositionCategory.TooHigh;
+
+        return positionCategory;
     }
 }

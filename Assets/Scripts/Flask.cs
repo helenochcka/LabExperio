@@ -4,28 +4,28 @@ public class Flask: MonoBehaviour
 {
     private const float LongLevelUpdateTime = 2f;
     private const float ShortLevelUpdateTime = 0.2f;
-    [SerializeField] GameObject Bottle;
+    [SerializeField] GameObject Valve;
         
     private float _occupancyLevel;
-    private Bottle _bottle;
+    private Valve _valve;
     private float _timeFromLastLevelUpdate;
     
     public float OccurancyLevel => _occupancyLevel;
-    public bool IsFull => _occupancyLevel == 100 ? true : false;
+    public bool IsFull => _occupancyLevel == 100;
 
     void Start()
     {
-        _bottle = Bottle.GetComponent<Bottle>();
+        _valve = Valve.GetComponent<Valve>();
         _occupancyLevel = 0f;
     }
 
     void Update()
     {
-        if (_bottle.DrippingState == DrippingState.DrippingSlow)
+        if (_valve.DrippingState == DrippingState.DrippingSlow)
         {
             Fill(LongLevelUpdateTime);
         }
-        else if (_bottle.DrippingState == DrippingState.DrippingFast)
+        else if (_valve.DrippingState == DrippingState.DrippingFast)
         {
             Fill(ShortLevelUpdateTime);
         }
