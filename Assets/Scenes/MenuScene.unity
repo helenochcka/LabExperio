@@ -210,7 +210,6 @@ GameObject:
   - component: {fileID: 318429315}
   - component: {fileID: 318429317}
   - component: {fileID: 318429316}
-  - component: {fileID: 318429318}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -281,19 +280,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 318429314}
   m_CullTransparentMesh: 1
---- !u!114 &318429318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 318429314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34d5760a10d07fa49a03b46940214741, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 0}
 --- !u!1 &431904449
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,16 +1038,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1536840142}
-        m_TargetAssemblyTypeName: SceneTransition, Assembly-CSharp
-        m_MethodName: Transition
-        m_Mode: 1
+      - m_Target: {fileID: 1864210072}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: OnHomeButtonClick
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1536840139
@@ -1509,7 +1495,7 @@ Animator:
   m_GameObject: {fileID: 1864210066}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0a207c9406e5bc945a54742adacf12fd, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4c4d8a23a7bb9a14c9c90a52af5a004c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
