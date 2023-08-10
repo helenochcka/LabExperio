@@ -4,6 +4,9 @@ public class Glass : MonoBehaviour
 {
     [SerializeField] GameObject Solution;
     private const decimal MouseWheelStep = 0.02m;
+    private const decimal UpperBoundGlassPosition = 0.56m;
+    private const decimal LowerBoundGlassPosition = 0.48m;
+
 
     private decimal _position;
     private PositionCategory _positionCategory;
@@ -48,12 +51,12 @@ public class Glass : MonoBehaviour
     {
         PositionCategory positionCategory;
 
-        if (position >= 0.48m & position <= 0.56m)
-            positionCategory = PositionCategory.Correct;
-        else if (position < 0.48m)
+        if (position > UpperBoundGlassPosition)
+            positionCategory = PositionCategory.TooHigh;
+        else if (position < LowerBoundGlassPosition)
             positionCategory = PositionCategory.TooLow;
         else
-            positionCategory = PositionCategory.TooHigh;
+            positionCategory = PositionCategory.Correct;
 
         return positionCategory;
     }

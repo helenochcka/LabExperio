@@ -5,11 +5,6 @@ public class Slot
 {
     [SerializeField] private Item item;
 
-    public Slot()
-    {
-        item = null;
-    }
-
     public Slot(Item item) 
     {
         this.item = item;
@@ -26,6 +21,7 @@ public class Slot
     }
 
     public Item GetItem() { return item; }
+
     public void AddItem(Item item)  
     {
         this.item = item;

@@ -3,10 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransition : MonoBehaviour
 {
-   public int sceneNumber;
-   public void Transition()
+    [SerializeField] string SceneName;
+
+    public void Transition()
     {
-        SceneManager.LoadScene(sceneNumber);
+        SceneManager.LoadScene(SceneName);
     }
-  
 }
