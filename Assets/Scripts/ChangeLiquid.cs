@@ -33,7 +33,7 @@ public class ChangeLiquid : MonoBehaviour
 
     void Update()
     {
-        switch (_flask.OccurancyLevel)
+        switch (_flask.OccurancyLevel) // U.. = (OccurancyLevel + 1 / 5)
         {
             case 4:
                 this.GetComponent<SpriteRenderer>().sprite = u1;
