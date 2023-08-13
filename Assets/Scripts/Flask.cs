@@ -5,18 +5,30 @@ public class Flask: MonoBehaviour
     private const float LongLevelUpdateTime = 2f;
     private const float ShortLevelUpdateTime = 0.2f;
     [SerializeField] GameObject Valve;
-        
-    private float _occupancyLevel;
+    [SerializeField] GameObject Liquid;
+
+    private float _fullnessPercentage;
     private Valve _valve;
+    private GameObject[] _visualLiquidLevels;
     private float _timeFromLastLevelUpdate;
-    
-    public float OccurancyLevel => _occupancyLevel;
-    public bool IsFull => _occupancyLevel == 100;
+    private float _intervalBetweenLevels;
+    public bool IsFull => _fullnessPercentage == 100;
 
     void Start()
     {
         _valve = Valve.GetComponent<Valve>();
-        _occupancyLevel = 0f;
+        _fullnessPercentage = 0f;
+        InitializeVisualLiquidLevels();
+        _intervalBetweenLevels = 100 / _visualLiquidLevels.Length;
+    }
+
+    private void InitializeVisualLiquidLevels()
+    {
+        _visualLiquidLevels = new GameObject[Liquid.transform.childCount];
+        for (int i = 0; i < _visualLiquidLevels.Length; i++)
+        {
+            _visualLiquidLevels[i] = Liquid.transform.GetChild(i).gameObject;
+        }
     }
 
     void Update()
@@ -37,7 +49,9 @@ public class Flask: MonoBehaviour
         if (_timeFromLastLevelUpdate >= currentLevelUpdateTime)
         {
             _timeFromLastLevelUpdate = 0f;
-            _occupancyLevel++;
+            _fullnessPercentage++;
         }
+        if ((_fullnessPercentage != 0) && (_fullnessPercentage % _intervalBetweenLevels == 0))
+            _visualLiquidLevels[(int)(_fullnessPercentage / _intervalBetweenLevels) - 1].SetActive(true);
     }
 }
