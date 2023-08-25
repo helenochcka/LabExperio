@@ -472,8 +472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LeftState: {fileID: 606277010}
   RightState: {fileID: 667989059}
-  Glass: {fileID: 1698750482}
-  Bubbles: {fileID: 1991022757}
+  MainGlass: {fileID: 1698750482}
   Valve: {fileID: 1408083764}
 --- !u!222 &67985074
 CanvasRenderer:
@@ -538,6 +537,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3157458486797621917, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
+      propertyPath: m_Name
+      value: Glass
+      objectReference: {fileID: 0}
+    - target: {fileID: 3157458486797621917, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
@@ -559,7 +562,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4892734124778007167, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
       propertyPath: m_Name
-      value: Slot
+      value: MainSlot
       objectReference: {fileID: 0}
     - target: {fileID: 4892734124778007167, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
       propertyPath: m_Layer
@@ -686,7 +689,7 @@ PrefabInstance:
       addedObject: {fileID: 1698750485}
     - targetCorrespondingSourceObject: {fileID: 4892734124778007167, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1698750486}
+      addedObject: {fileID: 1698750489}
   m_SourcePrefab: {fileID: 100100000, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
 --- !u!224 &75252873 stripped
 RectTransform:
@@ -720,6 +723,10 @@ PrefabInstance:
     - target: {fileID: 2814242446324015036, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3157458486797621917, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
+      propertyPath: m_Name
+      value: Glass
       objectReference: {fileID: 0}
     - target: {fileID: 3157458486797621917, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
       propertyPath: m_Layer
@@ -901,6 +908,10 @@ PrefabInstance:
     - target: {fileID: 2814242446324015036, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3157458486797621917, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
+      propertyPath: m_Name
+      value: Glass
       objectReference: {fileID: 0}
     - target: {fileID: 3157458486797621917, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
       propertyPath: m_Layer
@@ -1167,18 +1178,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 371715089}
         m_TargetAssemblyTypeName: ApplicationController, Assembly-CSharp
-        m_MethodName: SetSceneName
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: MenuScene
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 371715089}
-        m_TargetAssemblyTypeName: ApplicationController, Assembly-CSharp
         m_MethodName: SceneTransition
         m_Mode: 5
         m_Arguments:
@@ -1186,7 +1185,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: FromLab
+          m_StringArgument: MenuScene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &312457592
@@ -1293,7 +1292,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &336441656
 GameObject:
@@ -1602,16 +1601,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cursor: {fileID: 1104881881}
-  Glass: {fileID: 1698750482}
+  MainGlass: {fileID: 1698750482}
   SlotHolder: {fileID: 660962414}
-  Items:
-  - item: {fileID: 11400000, guid: 7acddff0959f4f24194cfb3f9bea41ef, type: 2}
-  - item: {fileID: 11400000, guid: 3d1cf035675a0f549b849e717f8ef48d, type: 2}
-  - item: {fileID: 11400000, guid: 37da51461be00234c8715bc6a3b2974f, type: 2}
-  - item: {fileID: 11400000, guid: 2ecdbc225d5ceeb43a0c7f5cb9172b01, type: 2}
-  - item: {fileID: 11400000, guid: cb88c076604d9ff4b9bf2bc118ed9dfd, type: 2}
-  - item: {fileID: 11400000, guid: 961d3d107cf94cc45a882247f1bec1ca, type: 2}
-  - item: {fileID: 11400000, guid: 77cbb3a7461c38549acf29644eff3173, type: 2}
+  Slots:
+  - Glass: {fileID: 11400000, guid: 7acddff0959f4f24194cfb3f9bea41ef, type: 2}
+  - Glass: {fileID: 11400000, guid: 3d1cf035675a0f549b849e717f8ef48d, type: 2}
+  - Glass: {fileID: 11400000, guid: 37da51461be00234c8715bc6a3b2974f, type: 2}
+  - Glass: {fileID: 11400000, guid: 2ecdbc225d5ceeb43a0c7f5cb9172b01, type: 2}
+  - Glass: {fileID: 11400000, guid: cb88c076604d9ff4b9bf2bc118ed9dfd, type: 2}
+  - Glass: {fileID: 11400000, guid: 961d3d107cf94cc45a882247f1bec1ca, type: 2}
+  - Glass: {fileID: 11400000, guid: 77cbb3a7461c38549acf29644eff3173, type: 2}
 --- !u!222 &496732103
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1721,6 +1720,10 @@ PrefabInstance:
     - target: {fileID: 2814242446324015036, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3157458486797621917, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
+      propertyPath: m_Name
+      value: Glass
       objectReference: {fileID: 0}
     - target: {fileID: 3157458486797621917, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
       propertyPath: m_Layer
@@ -3205,6 +3208,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3157458486797621917, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
+      propertyPath: m_Name
+      value: Glass
+      objectReference: {fileID: 0}
+    - target: {fileID: 3157458486797621917, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
@@ -3427,6 +3434,7 @@ GameObject:
   - component: {fileID: 1103382323}
   - component: {fileID: 1103382322}
   - component: {fileID: 1103382326}
+  - component: {fileID: 1103382327}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3517,7 +3525,7 @@ RectTransform:
   - {fileID: 436047079}
   - {fileID: 496732100}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3545,6 +3553,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1103382327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103382321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c41529eb47cbb498d7470ca403e828, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Drops: {fileID: 1909390591}
+  Bubbles: {fileID: 1991022757}
 --- !u!1 &1104881881
 GameObject:
   m_ObjectHideFlags: 0
@@ -3740,7 +3762,7 @@ RectTransform:
   - {fileID: 1606979795}
   - {fileID: 65794086}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4007,7 +4029,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bad67e7638eb06349873cb608ee5dbc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Drops: {fileID: 1909390591}
   Flask: {fileID: 1847233363}
   Warning: {fileID: 65794085}
 --- !u!212 &1408083772
@@ -4396,7 +4417,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1644585935
 PrefabInstance:
@@ -4421,6 +4442,10 @@ PrefabInstance:
     - target: {fileID: 2814242446324015036, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3157458486797621917, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
+      propertyPath: m_Name
+      value: Glass
       objectReference: {fileID: 0}
     - target: {fileID: 3157458486797621917, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
       propertyPath: m_Layer
@@ -4670,7 +4695,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 100, y: 100}
   m_EdgeRadius: 0
---- !u!114 &1698750486
+--- !u!114 &1698750489
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4923,6 +4948,10 @@ PrefabInstance:
     - target: {fileID: 2814242446324015036, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3157458486797621917, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
+      propertyPath: m_Name
+      value: Glass
       objectReference: {fileID: 0}
     - target: {fileID: 3157458486797621917, guid: 042cafd4c5c767b4eb0de0e7ff74265e, type: 3}
       propertyPath: m_Layer

@@ -4,34 +4,31 @@ public class PressureGauge : MonoBehaviour
 {
     [SerializeField] GameObject LeftState;
     [SerializeField] GameObject RightState;
-    [SerializeField] GameObject Glass;
-    [SerializeField] GameObject Bubbles;
+    [SerializeField] GameObject MainGlass;
     [SerializeField] GameObject Valve;
 
-    private Animator _animator;
-    private Glass _glass;
+    private SystemAnimationController _systemAnimationController;
+    private MainGlass _mainGlass;
     private Valve _valve;
     private string _establishingProcess;
-
     private Vector3 _startScaleLeftState;
     private Vector3 _startScaleRightState;
 
     void Start()
     {
+        _systemAnimationController = GetComponentInParent<SystemAnimationController>();
         _establishingProcess = "";
-        _glass = Glass.GetComponent<Glass>();
+        _mainGlass = MainGlass.GetComponent<MainGlass>();
         _valve = Valve.GetComponent<Valve>();
-        _animator = Bubbles.GetComponent<Animator>();
-
         _startScaleLeftState = LeftState.transform.localScale;
         _startScaleRightState = RightState.transform.localScale;
     }
 
     void Update()
     {
-        PlayBlowBubblesAnimation(_valve.DrippingState, _glass.PositionCategory);
-        _establishingProcess = BlowingBubbles(_valve.DrippingState, _glass.PositionCategory);
-        EstablishValueStates(_establishingProcess, CheckSolution(_glass.SolutionConcentration));
+        _systemAnimationController.PlayBlowBubblesAnimation(_valve.DrippingState, _mainGlass.PositionCategory);
+        _establishingProcess = BlowingBubbles(_valve.DrippingState, _mainGlass.PositionCategory);
+        EstablishValueStates(_establishingProcess, CheckSolution(_mainGlass.SolutionConcentration));
     }
         
 
@@ -129,30 +126,5 @@ public class PressureGauge : MonoBehaviour
             establishingProcess = "Inactive";
         }
         return establishingProcess;
-    }
-
-    private void PlayBlowBubblesAnimation(DrippingState drippingState, PositionCategory positionCategory)
-    {
-        AnimatorControllerParameter parameter;
-        if (positionCategory == PositionCategory.Correct)
-        {
-            if (drippingState == DrippingState.DrippingSlow)
-            {
-                parameter = _animator.GetParameter(1);
-            }
-            else if (drippingState == DrippingState.DrippingFast)
-            {
-                parameter = _animator.GetParameter(2);
-            }
-            else
-            {
-                parameter = _animator.GetParameter(0);
-            }
-        }
-        else
-        {
-            parameter = _animator.GetParameter(0);
-        }
-        _animator.SetTrigger(parameter.name);
     }
 }

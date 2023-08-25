@@ -3,56 +3,55 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
     [SerializeField] GameObject Cursor;
-    [SerializeField] GameObject Glass;
+    [SerializeField] GameObject MainGlass;
     [SerializeField] GameObject SlotHolder;
-    
-    public Slot[] Items;
+
+    public Slot[] Slots;
 
     private GameObject[] _slots;
-    private Glass _moveGlass;
+    private MainGlass _mainGlass;
     private Slot _movingSlot;
     private Slot _tempSlot;
-    private Slot _originalSlot;
-    private bool _isMovingItem;
+    private Slot _currentSlot;
+    private bool _isGlassMoving;
 
     private void Start()
     {
         _slots = new GameObject[SlotHolder.transform.childCount];
-        _moveGlass = Glass.GetComponent<Glass>();
+        _mainGlass = MainGlass.GetComponent<MainGlass>();
 
         for (int i = 0; i < SlotHolder.transform.childCount; i++)
             _slots[i] = SlotHolder.transform.GetChild(i).gameObject;
        
-        RefreshUI();
+        RefreshInventory();
     }
 
     private void Update()
     {
-        Cursor.SetActive(_isMovingItem);
+        Cursor.SetActive(_isGlassMoving);
         Cursor.transform.position = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
 
-        if (_isMovingItem)
-            Cursor.GetComponent<SpriteRenderer>().sprite = _movingSlot.GetItem().itemIcon;
+        if (_isGlassMoving)
+            Cursor.GetComponent<SpriteRenderer>().sprite = _movingSlot.GetGlass().Icon;
         if (Input.GetMouseButtonDown(0))
         { 
-            if(_isMovingItem)
+            if(_isGlassMoving)
             {
                 EndItemMove();
             }
             else 
-                BeginItemMove();
+                BeginIGlassMove();
         }
     }
 
-    #region Inventory Utils
-    public void RefreshUI()
+    public void RefreshInventory()
     {
         for (int i = 0; i < _slots.Length; i++)
         {
             try
             {
                 _slots[i].transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
-                _slots[i].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Items[i].GetItem().itemIcon;
+                _slots[i].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Slots[i].GetGlass().Icon;
             }
             catch
             {
@@ -62,105 +61,54 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public bool Add(Item item )
+    public void ReturnGlass(Glass glass)
     {
-        Slot slot = Contains(item);
-        for (int i = 0; i < Items.Length; i++)
+        for (int i = 0; i < Slots.Length; i++)
         {
-            if (Items[i].GetItem() == null)
+            if (Slots[i].GetGlass() == null)
             {
-                Items[i].AddItem(item);
-                RefreshUI();
-                return true;
+                Slots[i].SetGlass(glass);
+                _movingSlot.CLear();
+                _isGlassMoving = false;
+                RefreshInventory();
             }
         }
-        return false;
     }
 
-    public Slot Contains(Item item)
+    private void BeginIGlassMove()
     {
-        for (int i = 0; i < Items.Length; i++)
-        {
-            if (Items[i].GetItem() == item)
-                return Items[i];
-        }
-        return null;
+        _currentSlot = GetClosestSlot();
+        if (_currentSlot == Slots[0] && _mainGlass.PositionCategory != PositionCategory.TooLow)
+            return;
+        if (_currentSlot == null || _currentSlot.GetGlass() == null)
+            return;
+
+        _movingSlot = new Slot();
+        _movingSlot.SetGlass(_currentSlot.GetGlass());
+        _currentSlot.CLear();
+        _isGlassMoving = true;
+        RefreshInventory();
     }
 
-    #endregion Inventory Utils
-
-    #region Moving Stuff
-
-    private bool BeginItemMove()
+    private void EndItemMove()
     {
-        _originalSlot = GetClosesSlot();
-        if (_originalSlot == Items[0])
-        {
-            if (_moveGlass.Position < 0.0m || _moveGlass.Position > 0.46m)
-            {
-                return false;
-            }
-        }
-        if (_originalSlot == null || _originalSlot.GetItem() == null)
-            return false;
+        _currentSlot = GetClosestSlot();
 
-        _movingSlot = new Slot(_originalSlot);
-        _originalSlot.Clear();
-        _isMovingItem = true;
-        RefreshUI();
-        return true;
+        if (_currentSlot == null || _currentSlot.GetGlass() == null)
+        {
+            ReturnGlass(_movingSlot.GetGlass());
+            return;
+        }
+        if (_currentSlot == Slots[0] && _mainGlass.PositionCategory != PositionCategory.TooLow)
+            return;
+        _tempSlot = new Slot();
+        _tempSlot.SetGlass(_currentSlot.GetGlass());
+        _currentSlot.SetGlass(_movingSlot.GetGlass());
+        _movingSlot.SetGlass(_tempSlot.GetGlass());
+        RefreshInventory();
     }
 
-    private bool EndItemMove()
-    {
-        _originalSlot = GetClosesSlot();
-
-        if (_originalSlot == null)
-        {
-            Add(_movingSlot.GetItem());
-            _movingSlot.Clear();
-        }
-        else
-        {  
-            if (_originalSlot.GetItem() != null)
-            {
-                if (_originalSlot.GetItem() == _movingSlot.GetItem())
-                {
-                    if (_originalSlot.GetItem())
-                    {
-                        _movingSlot.Clear();
-                    }
-                    else
-                        return false;
-                }
-                else
-                {
-                    if (_originalSlot == Items[0])
-                    {
-                        if (_moveGlass.Position < 0.0m || _moveGlass.Position > 0.46m)
-                        {
-                            return false;
-                        }
-                    }
-                    _tempSlot = new Slot(_originalSlot);
-                    _originalSlot.AddItem(_movingSlot.GetItem());
-                    _movingSlot.AddItem(_tempSlot.GetItem());
-                    RefreshUI();
-                    return true;
-                }
-            }
-            else
-            {
-                _originalSlot.AddItem(_movingSlot.GetItem());
-                    _movingSlot.Clear();
-            }
-        }
-        _isMovingItem = false;
-        RefreshUI();
-        return true;
-    }
-
-    private Slot GetClosesSlot()
+    private Slot GetClosestSlot()
     {
         for(int i = 0; i < _slots.Length; i++)
         {
@@ -170,10 +118,9 @@ public class InventoryManager : MonoBehaviour
 
             if (hit.collider != null && hit.collider.gameObject == _slots[i])
             {
-                return Items[i];
+                return Slots[i];
             }
         }
         return null;
     }
-    #endregion Moving Stuff
 }

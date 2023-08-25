@@ -7,11 +7,10 @@ public class Valve : MonoBehaviour
     private const float RotationFactor = 120f;
     private const decimal MouseWheelStep = 0.05m;
 
-    [SerializeField] GameObject Drops;
     [SerializeField] GameObject Flask;
     [SerializeField] GameObject Warning;
 
-    private Animator _animator;
+    private SystemAnimationController _systemAnimationController;
     private Flask _flask;
     private decimal _openingDegree;
     private DrippingState _drippingState;
@@ -20,7 +19,7 @@ public class Valve : MonoBehaviour
     void Start()
     {
         _flask = Flask.GetComponent<Flask>();
-        _animator = Drops.GetComponent<Animator>();
+        _systemAnimationController = GetComponentInParent<SystemAnimationController>();
         _openingDegree = 0.0m;
         _drippingState = DrippingState.NotDripping;
     }
@@ -33,7 +32,7 @@ public class Valve : MonoBehaviour
             Warning.SetActive(true);
         }
         _drippingState = DetermineDrippingState(_openingDegree);
-        PlayDrippingAnimation(_drippingState);
+        _systemAnimationController.PlayDrippingAnimation(_drippingState);
     }
 
     void OnMouseOver()
@@ -66,11 +65,5 @@ public class Valve : MonoBehaviour
             drippingState = DrippingState.DrippingSlow;
 
         return drippingState;
-    }
-
-    private void PlayDrippingAnimation(DrippingState drippingState)
-    {
-        AnimatorControllerParameter parameter = _animator.GetParameter((int)drippingState);
-        _animator.SetTrigger(parameter.name);
     }
 }

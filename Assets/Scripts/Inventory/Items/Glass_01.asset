@@ -10,8 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66d005ee2a8e13f4babc684f7be6e732, type: 3}
-  m_Name: Flask_32
+  m_Name: Glass_01
   m_EditorClassIdentifier: 
-  itemValue: 3.2
-  itemIcon: {fileID: 21300000, guid: 143d214a0b58c9c448b4d9fc7498ae1b, type: 3}
-  itemType: 6
+  Concentration: 0.1
+  Icon: {fileID: 21300000, guid: 1f7bca42ca26a2943b37e1589bbe4720, type: 3}

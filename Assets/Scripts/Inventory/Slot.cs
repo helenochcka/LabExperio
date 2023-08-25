@@ -3,27 +3,17 @@ using UnityEngine;
 [System.Serializable]
 public class Slot
 {
-    [SerializeField] private Item item;
+    [SerializeField] Glass Glass;
 
-    public Slot(Item item) 
+    public void SetGlass(Glass glass)
     {
-        this.item = item;
+        this.Glass = glass;
     }
 
-    public Slot(Slot slot)
+    public void CLear()
     {
-        this.item = slot.GetItem();
+        this.Glass = null;
     }
 
-    public void Clear()
-    {
-        this.item = null;
-    }
-
-    public Item GetItem() { return item; }
-
-    public void AddItem(Item item)  
-    {
-        this.item = item;
-    }
+    public Glass GetGlass() { return Glass; }
 }

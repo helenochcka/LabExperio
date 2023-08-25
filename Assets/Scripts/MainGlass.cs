@@ -1,22 +1,20 @@
 using UnityEngine;
 
-public class Glass : MonoBehaviour
+public class MainGlass : MonoBehaviour
 {
     [SerializeField] GameObject Solution;
     private const decimal MouseWheelStep = 0.02m;
     private const decimal UpperBoundGlassPosition = 0.56m;
     private const decimal LowerBoundGlassPosition = 0.48m;
 
-
     private decimal _position;
     private PositionCategory _positionCategory;
     private float _solutionConcentration;
     private InventoryManager _inventoryManager;
-    private Item _item;
+    private Glass _glass;
 
     public float SolutionConcentration => _solutionConcentration;
     public PositionCategory PositionCategory => _positionCategory;
-    public decimal Position => _position;
 
     void Start()
     {
@@ -26,9 +24,9 @@ public class Glass : MonoBehaviour
 
     void Update()
     {
-        _item = _inventoryManager.Items[0].GetItem();
-        if (_item != null)
-            _solutionConcentration = _item.itemValue;
+        _glass = _inventoryManager.Slots[0].GetGlass();
+        if (_glass != null)
+            _solutionConcentration = _glass.Concentration;
     }
 
     void OnMouseOver()
