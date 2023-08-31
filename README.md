@@ -14,3 +14,6 @@ The list of implemented labs will probalby be updated over time.
 
 
 # Demo
+
+## Compatibility
+tested on Unity 2018.2.4f, windows10 (GTX 1060).
