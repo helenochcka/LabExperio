@@ -24,7 +24,7 @@ public class MainGlass : MonoBehaviour
 
     void Update()
     {
-        _glass = _inventoryManager.Slots[0].GetGlass();
+        _glass = _inventoryManager.GetMainSlot().GetGlass();
         if (_glass != null)
             _solutionConcentration = _glass.Concentration;
     }

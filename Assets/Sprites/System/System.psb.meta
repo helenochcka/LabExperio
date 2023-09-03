@@ -136,7 +136,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
     spritePosition: {x: 360, y: 87}
-  - name: Water_state_left
+  - name: Water_level_left
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -157,7 +157,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 853, y: 214}
     spritePosition: {x: 1072, y: 250}
-  - name: Water_state_right
+  - name: Water_level_right
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -261,6 +261,18 @@ ScriptedImporter:
     allowsAlphaSplitting: 0
     androidETC2FallbackOverride: 0
   - name: Server
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: WebGL
     overridden: 0
     ignorePlatformSupport: 0
     maxTextureSize: 2048

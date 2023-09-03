@@ -5,9 +5,9 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] GameObject Cursor;
     [SerializeField] GameObject MainGlass;
     [SerializeField] GameObject SlotHolder;
+    [SerializeField] Slot[] Slots;
 
-    public Slot[] Slots;
-
+    private Slot _mainSlot;
     private GameObject[] _slots;
     private MainGlass _mainGlass;
     private Slot _movingSlot;
@@ -15,8 +15,10 @@ public class InventoryManager : MonoBehaviour
     private Slot _currentSlot;
     private bool _isGlassMoving;
 
-    private void Start()
+
+    void Start()
     {
+        _mainSlot = Slots[0];
         _slots = new GameObject[SlotHolder.transform.childCount];
         _mainGlass = MainGlass.GetComponent<MainGlass>();
 
@@ -26,7 +28,7 @@ public class InventoryManager : MonoBehaviour
         RefreshInventory();
     }
 
-    private void Update()
+    void Update()
     {
         Cursor.SetActive(_isGlassMoving);
         Cursor.transform.position = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
@@ -42,6 +44,11 @@ public class InventoryManager : MonoBehaviour
             else 
                 BeginIGlassMove();
         }
+    }
+
+    public Slot GetMainSlot()
+    {
+        return _mainSlot;
     }
 
     public void RefreshInventory()
@@ -78,7 +85,7 @@ public class InventoryManager : MonoBehaviour
     private void BeginIGlassMove()
     {
         _currentSlot = GetClosestSlot();
-        if (_currentSlot == Slots[0] && _mainGlass.PositionCategory != PositionCategory.TooLow)
+        if (_currentSlot == _mainSlot && _mainGlass.PositionCategory != PositionCategory.TooLow)
             return;
         if (_currentSlot == null || _currentSlot.GetGlass() == null)
             return;
@@ -99,7 +106,7 @@ public class InventoryManager : MonoBehaviour
             ReturnGlass(_movingSlot.GetGlass());
             return;
         }
-        if (_currentSlot == Slots[0] && _mainGlass.PositionCategory != PositionCategory.TooLow)
+        if (_currentSlot == _mainSlot && _mainGlass.PositionCategory != PositionCategory.TooLow)
             return;
         _tempSlot = new Slot();
         _tempSlot.SetGlass(_currentSlot.GetGlass());

@@ -470,8 +470,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d83bc286314ba84498f1cbb7f0f6f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LeftState: {fileID: 606277010}
-  RightState: {fileID: 667989059}
+  LeftLevel: {fileID: 606277010}
+  RightLevel: {fileID: 667989059}
   MainGlass: {fileID: 1698750482}
   Valve: {fileID: 1408083764}
 --- !u!222 &67985074
@@ -2011,7 +2011,7 @@ GameObject:
   - component: {fileID: 606277013}
   - component: {fileID: 606277012}
   m_Layer: 5
-  m_Name: Left State
+  m_Name: Left Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2130,7 +2130,7 @@ GameObject:
   - component: {fileID: 667989062}
   - component: {fileID: 667989061}
   m_Layer: 5
-  m_Name: Right State
+  m_Name: Right Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -10,7 +10,7 @@ public class Flask: MonoBehaviour
     private float _fullnessPercentage;
     private Valve _valve;
     private GameObject[] _visualLiquidLevels;
-    private float _timeFromLastLevelUpdate;
+    private float _timeFromLastLevelUpdate = 0.0f;
     private float _intervalBetweenLevels;
     public bool IsFull => _fullnessPercentage == 100;
 
