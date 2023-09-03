@@ -1,4 +1,5 @@
-![Group 18](https://github.com/helenochcka/LabExperio/assets/114440485/919375ac-316b-4bc4-a72d-ec0403d175cf)
+![Group 18](https://github.com/helenochcka/LabExperio/assets/114440485/4c5ea83c-3a8f-4535-a9ea-ea61e51aa33a)
+
 
 # Description
 LabExperio is a simulator built using Unity and C#. It's intended for university students, particularly those taking physics courses. This simulator lets students perform their physics class experiments on a computer, creating a virtual lab environment. Through this virtual lab, students can engage with and explore various physics phenomena, freeing them from the need to share outdated physical equipment and enabling a more dynamic learning experience.
@@ -18,7 +19,8 @@ Controls:
 
 
 # Demo
-![LabExperio-Demo](https://github.com/helenochcka/LabExperio/assets/114440485/d360a80d-f1c6-4985-87b8-07a9a4a66e58)
+![LabExperio-Demo](https://github.com/helenochcka/LabExperio/assets/114440485/829e1431-8ca8-4abf-9e56-f5855dfb041d)
+
 
 ## Compatibility
 Tested on Unity 2022.3.4f1, .NET 6.0, Windows 11.
