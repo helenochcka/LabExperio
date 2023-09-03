@@ -7,12 +7,12 @@ public class Slot
 
     public void SetGlass(Glass glass)
     {
-        this.Glass = glass;
+        Glass = glass;
     }
 
     public void CLear()
     {
-        this.Glass = null;
+        Glass = null;
     }
 
     public Glass GetGlass() { return Glass; }

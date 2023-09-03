@@ -3,6 +3,9 @@
 public class PressureGauge : MonoBehaviour
 {
     private const float RangeOscillationPercentage = 0.15f;
+    private const float TimeBetweenOscilations = 0.2f;
+    private const float OffsetLevelsValueFromCorrect = 0.2f;
+
     [SerializeField] GameObject LeftLevel;
     [SerializeField] GameObject RightLevel;
     [SerializeField] GameObject MainGlass;
@@ -31,28 +34,28 @@ public class PressureGauge : MonoBehaviour
         _timeFromLastLevelUpdate += Time.deltaTime;
         _systemAnimationController.PlayBlowBubblesAnimation(_valve.DrippingState, _mainGlass.PositionCategory);
         OscillateValue();
-        EstablishLevels(_valve.DrippingState, _mainGlass.PositionCategory);
+        EstablishLevels();
     }
 
-    private void EstablishLevels(DrippingState valveDrippingState, PositionCategory glassPositionCategory)
+    private void EstablishLevels()
     {
-        if (valveDrippingState == DrippingState.NotDripping || glassPositionCategory == PositionCategory.TooLow)
+        if (_valve.DrippingState == DrippingState.NotDripping || _mainGlass.PositionCategory == PositionCategory.TooLow)
         {
-            SetValue(1.0f);
+            SetLevelsValue(1.0f);
         }
-        else if (glassPositionCategory == PositionCategory.Correct)
+        else if (_mainGlass.PositionCategory == PositionCategory.Correct)
         {
-            SetValue(_value);
+            SetLevelsValue(_value);
         }
-        else if (glassPositionCategory == PositionCategory.TooHigh)
+        else if (_mainGlass.PositionCategory == PositionCategory.TooHigh)
         {
-            SetValue(_value + 0.2f);
+            SetLevelsValue(_value + OffsetLevelsValueFromCorrect);
         }
     }
 
     private void OscillateValue()
     {
-        if (_timeFromLastLevelUpdate >= 0.2f)
+        if (_timeFromLastLevelUpdate >= TimeBetweenOscilations)
         {
             _value = Glass.ConcentrationToHightMapping[_mainGlass.SolutionConcentration];
             if (_valve.DrippingState == DrippingState.DrippingFast)
@@ -63,7 +66,7 @@ public class PressureGauge : MonoBehaviour
         }
     }
 
-    private void SetValue(float value)
+    private void SetLevelsValue(float value)
     {
         LeftLevel.transform.localScale = new Vector3(_startScaleLeftLevel.x, _startScaleLeftLevel.y / value, _startScaleLeftLevel.z);
         RightLevel.transform.localScale = new Vector3(_startScaleRightLevel.x, _startScaleRightLevel.y * value, _startScaleRightLevel.z);

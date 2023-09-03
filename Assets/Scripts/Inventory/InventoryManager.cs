@@ -15,7 +15,6 @@ public class InventoryManager : MonoBehaviour
     private Slot _currentSlot;
     private bool _isGlassMoving;
 
-
     void Start()
     {
         _mainSlot = Slots[0];
@@ -68,13 +67,13 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void ReturnGlass(Glass glass)
+    public void ReturnGlass()
     {
         for (int i = 0; i < Slots.Length; i++)
         {
             if (Slots[i].GetGlass() == null)
             {
-                Slots[i].SetGlass(glass);
+                Slots[i].SetGlass(_movingSlot.GetGlass());
                 _movingSlot.CLear();
                 _isGlassMoving = false;
                 RefreshInventory();
@@ -103,7 +102,7 @@ public class InventoryManager : MonoBehaviour
 
         if (_currentSlot == null || _currentSlot.GetGlass() == null)
         {
-            ReturnGlass(_movingSlot.GetGlass());
+            ReturnGlass();
             return;
         }
         if (_currentSlot == _mainSlot && _mainGlass.PositionCategory != PositionCategory.TooLow)

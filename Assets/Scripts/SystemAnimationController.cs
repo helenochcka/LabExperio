@@ -4,6 +4,7 @@ public class SystemAnimationController : MonoBehaviour
 {
     [SerializeField] GameObject Drops;
     [SerializeField] GameObject Bubbles;
+
     private Animator _dropsAnimator;
     private Animator _bubblesAnimator;
 

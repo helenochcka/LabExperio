@@ -14,6 +14,7 @@ public class Valve : MonoBehaviour
     private Flask _flask;
     private decimal _openingDegree;
     private DrippingState _drippingState;
+
     public DrippingState DrippingState => _drippingState;
 
     void Start()
@@ -31,7 +32,7 @@ public class Valve : MonoBehaviour
             _openingDegree = 0.0m;
             Warning.SetActive(true);
         }
-        _drippingState = DetermineDrippingState(_openingDegree);
+        DetermineDrippingState();
         _systemAnimationController.PlayDrippingAnimation(_drippingState);
     }
 
@@ -53,17 +54,13 @@ public class Valve : MonoBehaviour
         }
     }
 
-    private DrippingState DetermineDrippingState(decimal openingDegree)
+    private void DetermineDrippingState()
     {
-        DrippingState drippingState;
-
-        if ((openingDegree >= 0) && (openingDegree <= LowerBoundOfCorrectOpeningDegree))
-            drippingState = DrippingState.NotDripping;
-        else if ((openingDegree > UpperBoundOfCorrectOpeningDegree) && (openingDegree <= 1))
-            drippingState = DrippingState.DrippingFast;
+        if ((_openingDegree >= 0) && (_openingDegree <= LowerBoundOfCorrectOpeningDegree))
+            _drippingState = DrippingState.NotDripping;
+        else if ((_openingDegree > UpperBoundOfCorrectOpeningDegree) && (_openingDegree <= 1))
+            _drippingState = DrippingState.DrippingFast;
         else
-            drippingState = DrippingState.DrippingSlow;
-
-        return drippingState;
+            _drippingState = DrippingState.DrippingSlow;
     }
 }

@@ -5,8 +5,10 @@ using UnityEngine.UI;
 public class SoundStateHandler : MonoBehaviour
 {
     private const string FilePath = "sound_settings.json";
+
     [SerializeField] Sprite MusicButtonOn;
     [SerializeField] Sprite MusicButtonOff;
+
     private bool _sound = true;
 
     void Start()
@@ -14,7 +16,7 @@ public class SoundStateHandler : MonoBehaviour
         if (!File.Exists(FilePath))
             SerializeSoundState();
         SoundStateDTO soundData = JsonUtility.FromJson<SoundStateDTO>(File.ReadAllText(FilePath));
-        _sound = soundData.soundState;
+        _sound = soundData.SoundState;
         SetSprite();
     }
 
@@ -37,7 +39,7 @@ public class SoundStateHandler : MonoBehaviour
     {
         SoundStateDTO soundDTO = new()
         {
-            soundState = _sound
+            SoundState = _sound
         };
         File.WriteAllText(FilePath, JsonUtility.ToJson(soundDTO));
     }

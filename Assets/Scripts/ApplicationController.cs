@@ -25,7 +25,7 @@ public class ApplicationController : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    public void RestartActiveScene()
+    public void ReloadActiveScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

@@ -6,7 +6,7 @@ public class Glass : ScriptableObject
 {
     public float Concentration;
     public Sprite Icon;
-    public static Dictionary<float, float> ConcentrationToHightMapping = new Dictionary<float, float>()
+    public static Dictionary<float, float> ConcentrationToHightMapping = new()
         {
             { 0.0f, 1.5f },
             { 0.1f, 1.18f },

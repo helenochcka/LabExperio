@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class MainGlass : MonoBehaviour
 {
-    [SerializeField] GameObject Solution;
     private const decimal MouseWheelStep = 0.02m;
     private const decimal UpperBoundGlassPosition = 0.56m;
     private const decimal LowerBoundGlassPosition = 0.48m;
+    
+    [SerializeField] GameObject Solution;
 
     private decimal _position;
     private PositionCategory _positionCategory;
@@ -42,20 +43,16 @@ public class MainGlass : MonoBehaviour
                 _position += MouseWheelStep;
                 this.transform.Translate(0, (float)MouseWheelStep, 0);
         }
-        _positionCategory = DeterminePositionCategory(_position);
+        DeterminePositionCategory();
     }
 
-    private PositionCategory DeterminePositionCategory(decimal position)
+    private void DeterminePositionCategory()
     {
-        PositionCategory positionCategory;
-
-        if (position > UpperBoundGlassPosition)
-            positionCategory = PositionCategory.TooHigh;
-        else if (position < LowerBoundGlassPosition)
-            positionCategory = PositionCategory.TooLow;
+        if (_position > UpperBoundGlassPosition)
+            _positionCategory = PositionCategory.TooHigh;
+        else if (_position < LowerBoundGlassPosition)
+            _positionCategory = PositionCategory.TooLow;
         else
-            positionCategory = PositionCategory.Correct;
-
-        return positionCategory;
+            _positionCategory = PositionCategory.Correct;
     }
 }
